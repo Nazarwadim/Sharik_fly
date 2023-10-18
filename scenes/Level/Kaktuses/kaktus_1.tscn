@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5pf3krco12oe"]
+
+[ext_resource type="Texture2D" uid="uid://b7tpw82ekypqv" path="res://assets/Kaktus_1_1.png" id="1_2p0s6"]
+[ext_resource type="PackedScene" uid="uid://do7xblwlxb5iy" path="res://scenes/Level/Kaktuses/Ikaktus.tscn" id="1_h4xox"]
+[ext_resource type="Texture2D" uid="uid://d1wmq7o2dgk4t" path="res://assets/Kaktus_1_2.png" id="2_rxjty"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_may27"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2p0s6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_rxjty")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Kaktus1" instance=ExtResource("1_h4xox")]
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(5, -25, -20, -25, -11, 3, -11, 3, -31, -8, -31, 6, -12, 17, -8, 42, -16, 50, 14, 50, 8, 42)
+
+[node name="AnimatedSprite2D" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_may27")
+frame_progress = 0.495529
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="2"]
+position = Vector2(-30, -26)
+scale = Vector2(4.7, 7.7)

@@ -1,16 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://rp25vmxf7bup"]
+[gd_scene load_steps=5 format=3 uid="uid://rp25vmxf7bup"]
 
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_3pdiy"]
 [ext_resource type="PackedScene" uid="uid://siyrgo0l3anm" path="res://scenes/Player/player.tscn" id="1_ssd4v"]
+[ext_resource type="PackedScene" uid="uid://dpw5vnjly6pjb" path="res://scenes/Level/level.tscn" id="2_6hhgd"]
+[ext_resource type="PackedScene" uid="uid://bgtietayb8gpk" path="res://scenes/UI/ui.tscn" id="4_g2pyl"]
 
 [node name="Game" type="Node"]
-
-[node name="Level" type="Node2D" parent="."]
+script = ExtResource("1_3pdiy")
 
 [node name="Player" parent="." instance=ExtResource("1_ssd4v")]
-position = Vector2(0, -298)
+position = Vector2(-2, -2)
+scale = Vector2(0.6, 0.6)
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
-remote_path = NodePath("../../Camera2D")
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -150)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -298)
+[node name="Level" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6hhgd")]
+player = NodePath("../Player")
+metadata/_edit_lock_ = true
+
+[node name="UI" parent="." instance=ExtResource("4_g2pyl")]

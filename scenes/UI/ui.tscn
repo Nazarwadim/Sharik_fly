@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgtietayb8gpk"]
+
+[ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0ygfx"]
+font_size = 29
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_u0qht")
+
+[node name="Tools" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Air" type="Control" parent="Tools"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AirBar" type="ProgressBar" parent="Tools/Air"]
+modulate = Color(0.239216, 0.172549, 0.882353, 1)
+layout_mode = 0
+offset_left = 174.0
+offset_top = 603.0
+offset_right = 380.0
+offset_bottom = 643.0
+value = 20.0
+rounded = true
+show_percentage = false
+
+[node name="Label" type="Label" parent="Tools/Air"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 601.0
+offset_right = 171.0
+offset_bottom = 644.0
+text = "air presure:"
+label_settings = SubResource("LabelSettings_0ygfx")
+
+[node name="Score" type="Control" parent="Tools"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="current" type="Label" parent="Tools/Score"]
+layout_mode = 0
+offset_left = 819.0
+offset_top = 540.0
+offset_right = 1034.0
+offset_bottom = 583.0
+text = "current:"
+label_settings = SubResource("LabelSettings_0ygfx")
+
+[node name="recordl" type="Label" parent="Tools/Score"]
+layout_mode = 0
+offset_left = 818.0
+offset_top = 584.0
+offset_right = 1039.0
+offset_bottom = 627.0
+text = "record:"
+label_settings = SubResource("LabelSettings_0ygfx")

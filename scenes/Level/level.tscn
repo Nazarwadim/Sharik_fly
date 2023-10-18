@@ -1,0 +1,87 @@
+[gd_scene load_steps=15 format=3 uid="uid://dpw5vnjly6pjb"]
+
+[ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_0xpgu"]
+[ext_resource type="Script" path="res://scenes/Level/Kaktuses/Kaktuses.gd" id="2_ugwwj"]
+[ext_resource type="PackedScene" uid="uid://c5pf3krco12oe" path="res://scenes/Level/Kaktuses/kaktus_1.tscn" id="3_pv55c"]
+[ext_resource type="PackedScene" uid="uid://beyxi3s2hsl85" path="res://scenes/Level/Kaktuses/kaktus_2.tscn" id="4_aife5"]
+[ext_resource type="PackedScene" uid="uid://bd1xhrmtfjuau" path="res://scenes/Level/Kaktuses/kaktus_3.tscn" id="5_w8wx1"]
+[ext_resource type="Script" path="res://scenes/Level/Cloud_Paralax.gd" id="6_0y378"]
+[ext_resource type="Texture2D" uid="uid://b5h35ns4qpstp" path="res://assets/chmara_1.png" id="7_stkdb"]
+[ext_resource type="Texture2D" uid="uid://cx3q8q0q5mbci" path="res://assets/mountains.png" id="8_nsjuu"]
+[ext_resource type="Texture2D" uid="uid://dxbhpxgod3cnf" path="res://assets/chmara_2(small).png" id="8_of18d"]
+[ext_resource type="Texture2D" uid="uid://g0lrxqjvl5ow" path="res://assets/chmara_3(medium).png" id="9_seqkq"]
+[ext_resource type="Texture2D" uid="uid://d3i3hyf4o2gvr" path="res://assets/chmara_4(large).png" id="10_3hnd5"]
+[ext_resource type="Texture2D" uid="uid://c3j4tamobpxp1" path="res://assets/chmara_5(long).png" id="11_1t5do"]
+[ext_resource type="Texture2D" uid="uid://de2bqqpaccdn" path="res://assets/sand.png" id="12_6b3vq"]
+[ext_resource type="Texture2D" uid="uid://crmxqjwsfjhuw" path="res://assets/sky.png" id="12_hfnh4"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_0xpgu")
+
+[node name="Kaktuses_generator" type="Node2D" parent="."]
+script = ExtResource("2_ugwwj")
+kaktuses = [ExtResource("3_pv55c"), ExtResource("4_aife5"), ExtResource("5_w8wx1")]
+
+[node name="Timer" type="Timer" parent="Kaktuses_generator"]
+autostart = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky_layer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(2500, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/sky_layer"]
+texture_filter = 1
+offset_left = -8.0
+offset_top = -704.0
+offset_right = 2504.0
+offset_bottom = 232.0
+rotation = -0.00853518
+texture = ExtResource("12_hfnh4")
+metadata/_edit_lock_ = true
+
+[node name="mountain_layer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(2500, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/mountain_layer"]
+texture_filter = 1
+offset_left = -24.0
+offset_top = 160.0
+offset_right = 2476.0
+offset_bottom = 448.0
+texture = ExtResource("8_nsjuu")
+
+[node name="ball_layer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(2500, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ball_layer"]
+texture_filter = 1
+offset_top = -5.0
+offset_right = 2500.0
+offset_bottom = 245.0
+texture = ExtResource("12_6b3vq")
+
+[node name="Cloud_Paralax" type="ParallaxBackground" parent="."]
+script = ExtResource("6_0y378")
+clouds = [ExtResource("7_stkdb"), ExtResource("8_of18d"), ExtResource("9_seqkq"), ExtResource("10_3hnd5"), ExtResource("11_1t5do")]
+
+[node name="clouds_layer0" type="ParallaxLayer" parent="Cloud_Paralax"]
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cloud_Paralax/clouds_layer0"]
+position = Vector2(1000, 0)
+texture = ExtResource("7_stkdb")
+
+[node name="clouds_layer1" type="ParallaxLayer" parent="Cloud_Paralax"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="clouds_layer2" type="ParallaxLayer" parent="Cloud_Paralax"]
+motion_scale = Vector2(0.4, 0.4)
+
+[node name="Timer" type="Timer" parent="Cloud_Paralax"]
+autostart = true
+
+[connection signal="timeout" from="Kaktuses_generator/Timer" to="." method="on_generate_timer_timeout"]
+[connection signal="timeout" from="Cloud_Paralax/Timer" to="." method="_on_cloud_timer_timeout"]

@@ -1,13 +1,34 @@
-[gd_scene load_steps=7 format=3 uid="uid://siyrgo0l3anm"]
+[gd_scene load_steps=14 format=3 uid="uid://siyrgo0l3anm"]
 
 [ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="1_3eea3"]
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_7fqlr"]
 [ext_resource type="Texture2D" uid="uid://bj15a2rewf4l7" path="res://assets/Ball_3.png" id="2_8bpd4"]
+[ext_resource type="Texture2D" uid="uid://b2s8yj54dxq85" path="res://assets/Ball_die_1.png" id="2_linoh"]
 [ext_resource type="Texture2D" uid="uid://dtjydu7q3w1br" path="res://assets/Ball_1.png" id="3_egrak"]
+[ext_resource type="Texture2D" uid="uid://6kgarcrs05u6" path="res://assets/Ball_die_2.png" id="3_g40jq"]
 [ext_resource type="Texture2D" uid="uid://bbd8b4rg82yip" path="res://assets/Ball_4.png" id="4_3gbs0"]
+[ext_resource type="Texture2D" uid="uid://0pau4kpvd8ps" path="res://assets/Ball_die_3.png" id="4_5tuor"]
+[ext_resource type="Script" path="res://scenes/Player/Entered_kaktus.gd" id="6_jyk7m"]
+[ext_resource type="Script" path="res://scenes/Player/AnimationSprite.gd" id="9_fw8pp"]
+[ext_resource type="Script" path="res://scenes/Player/AirPresure.gd" id="10_hi8le"]
+[ext_resource type="Script" path="res://scenes/Player/Сontrol_of_physics.gd" id="12_uguv6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr475"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_linoh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_g40jq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_5tuor")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_3eea3")
@@ -21,10 +42,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_egrak")
+"texture": ExtResource("1_3eea3")
 }, {
 "duration": 1.0,
-"texture": ExtResource("1_3eea3")
+"texture": ExtResource("3_egrak")
 }],
 "loop": true,
 "name": &"idle",
@@ -32,10 +53,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_3eea3")
+"texture": ExtResource("4_3gbs0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_3gbs0")
+"texture": ExtResource("1_3eea3")
 }],
 "loop": true,
 "name": &"up",
@@ -43,13 +64,30 @@ animations = [{
 }]
 
 [node name="Player" type="Area2D"]
+modulate = Color(1, 1, 1, 0.772549)
 script = ExtResource("1_7fqlr")
+speed_increase = 10.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kr475")
-animation = &"down"
-frame_progress = 0.508471
+animation = &"idle"
+script = ExtResource("9_fw8pp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 13, 47, 20, 46, 10, 22, 32, 16)
+polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 6, 33, 12, 31, 10, 22, 32, 16)
+
+[node name="Entered_kaktus" type="Node" parent="."]
+script = ExtResource("6_jyk7m")
+
+[node name="AirPresure" type="Node" parent="." node_paths=PackedStringArray("ball")]
+script = ExtResource("10_hi8le")
+ball = NodePath("..")
+
+[node name="Сontrol_of_physics" type="Node" parent="." node_paths=PackedStringArray("ball")]
+script = ExtResource("12_uguv6")
+ball = NodePath("..")
+
+[connection signal="area_entered" from="." to="Entered_kaktus" method="_on_player_area_entered"]
+[connection signal="on_state_changed" from="." to="AnimatedSprite2D" method="_on_player_on_state_changed"]
