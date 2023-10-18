@@ -9,6 +9,7 @@ class_name Player
 @export var air_presure_decrease_decrease:float = 70
 @onready var velocity = Vector2(speed, 0)
 signal on_state_changed(state:state)
+signal on_died
 var current_state:state 
 
 enum state{
@@ -18,13 +19,17 @@ enum state{
 	die
 }
 
-func _physics_process(delta) -> void:
+func _physics_process(delta) -> void:	
 	if current_state == state.die:
 		return;
 	if Input.is_action_pressed("down"):
-		current_state = state.down
+		change_state(state.down)
 	elif Input.is_action_pressed("up") && air_presure > 0 && not $AirPresure.block_airpresure_up:
-		current_state = state.up
+		change_state(state.up)
 	else:
-		current_state = state.idle
-	on_state_changed.emit(current_state)
+		change_state(state.idle)
+	
+func change_state(state_:state):
+	if(state_ != current_state):
+		current_state = state_
+		on_state_changed.emit(current_state)

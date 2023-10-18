@@ -1,13 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgtietayb8gpk"]
+[gd_scene load_steps=9 format=3 uid="uid://bgtietayb8gpk"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
+[ext_resource type="LabelSettings" uid="uid://b63h4jabqxvhq" path="res://fonts/label_settings_for_score.tres" id="2_bvo4i"]
+[ext_resource type="Script" path="res://scenes/UI/control/ButtonUp.gd" id="2_qn8aw"]
+[ext_resource type="Texture2D" uid="uid://nll72mo2g1u2" path="res://assets/svg_icons/settings-cogwheel-svgrepo-com.svg" id="2_r2tdx"]
+[ext_resource type="Script" path="res://scenes/UI/Tools/SettingsButton.gd" id="4_8jxon"]
+[ext_resource type="Script" path="res://scenes/UI/control/ButtonDown.gd" id="6_wv5ak"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ygfx"]
 font_size = 29
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Shortcut" id="Shortcut_3mfom"]
+
 [node name="UI" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_u0qht")
 
 [node name="Tools" type="Control" parent="."]
@@ -50,16 +58,79 @@ offset_bottom = 40.0
 layout_mode = 0
 offset_left = 819.0
 offset_top = 540.0
-offset_right = 1034.0
+offset_right = 1146.0
 offset_bottom = 583.0
 text = "current:"
 label_settings = SubResource("LabelSettings_0ygfx")
+
+[node name="Label" type="Label" parent="Tools/Score/current"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 9.0
+offset_right = 334.0
+offset_bottom = 47.0
+label_settings = ExtResource("2_bvo4i")
 
 [node name="recordl" type="Label" parent="Tools/Score"]
 layout_mode = 0
 offset_left = 818.0
 offset_top = 584.0
-offset_right = 1039.0
+offset_right = 1148.0
 offset_bottom = 627.0
 text = "record:"
 label_settings = SubResource("LabelSettings_0ygfx")
+
+[node name="Label" type="Label" parent="Tools/Score/recordl"]
+layout_mode = 0
+offset_left = 104.0
+offset_top = 6.0
+offset_right = 325.0
+offset_bottom = 40.0
+label_settings = ExtResource("2_bvo4i")
+
+[node name="SettingsButton" type="TextureButton" parent="Tools"]
+layout_mode = 0
+offset_left = 1090.0
+offset_top = 1.0
+offset_right = 1150.0
+offset_bottom = 61.0
+shortcut = SubResource("Shortcut_3mfom")
+texture_normal = ExtResource("2_r2tdx")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_8jxon")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 70.0
+offset_right = 1151.0
+offset_bottom = 652.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonUp" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -2.0
+offset_top = 67.0
+offset_right = 1149.0
+offset_bottom = 399.0
+script = ExtResource("2_qn8aw")
+metadata/_edit_lock_ = true
+
+[node name="ButtonDown" type="Button" parent="Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 416.0
+offset_right = 1148.0
+offset_bottom = 646.0
+script = ExtResource("6_wv5ak")
+metadata/_edit_lock_ = true
+
+[connection signal="button_down" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_down"]
+[connection signal="button_up" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_up"]
+[connection signal="button_down" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_down"]
+[connection signal="button_up" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_up"]
+[connection signal="button_down" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
+[connection signal="button_up" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]

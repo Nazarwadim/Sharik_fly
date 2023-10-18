@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Level/Kaktuses/Ikaktus.gd" id="1_8m0el"]
 
-[node name="Kaktus" type="Area2D"]
+[node name="Kaktus" type="Area2D" groups=["kaktuses"]]
 script = ExtResource("1_8m0el")
 metadata/_edit_group_ = true
 

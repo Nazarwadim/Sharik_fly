@@ -19,4 +19,9 @@ position = Vector2(0, -150)
 player = NodePath("../Player")
 metadata/_edit_lock_ = true
 
-[node name="UI" parent="." instance=ExtResource("4_g2pyl")]
+[node name="UI" parent="." node_paths=PackedStringArray("game") instance=ExtResource("4_g2pyl")]
+game = NodePath("..")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[connection signal="on_died" from="Player" to="." method="_on_player_on_died"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpw5vnjly6pjb"]
+[gd_scene load_steps=16 format=3 uid="uid://dpw5vnjly6pjb"]
 
 [ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_0xpgu"]
 [ext_resource type="Script" path="res://scenes/Level/Kaktuses/Kaktuses.gd" id="2_ugwwj"]
@@ -8,12 +8,13 @@
 [ext_resource type="Script" path="res://scenes/Level/Cloud_Paralax.gd" id="6_0y378"]
 [ext_resource type="Texture2D" uid="uid://b5h35ns4qpstp" path="res://assets/chmara_1.png" id="7_stkdb"]
 [ext_resource type="Texture2D" uid="uid://cx3q8q0q5mbci" path="res://assets/mountains.png" id="8_nsjuu"]
-[ext_resource type="Texture2D" uid="uid://dxbhpxgod3cnf" path="res://assets/chmara_2(small).png" id="8_of18d"]
-[ext_resource type="Texture2D" uid="uid://g0lrxqjvl5ow" path="res://assets/chmara_3(medium).png" id="9_seqkq"]
-[ext_resource type="Texture2D" uid="uid://d3i3hyf4o2gvr" path="res://assets/chmara_4(large).png" id="10_3hnd5"]
-[ext_resource type="Texture2D" uid="uid://c3j4tamobpxp1" path="res://assets/chmara_5(long).png" id="11_1t5do"]
+[ext_resource type="PackedScene" uid="uid://cfko0rodfgt3a" path="res://scenes/Level/Clouds/cloud_1.tscn" id="10_h6uvp"]
+[ext_resource type="PackedScene" uid="uid://btqkt1pt1kevo" path="res://scenes/Level/Clouds/cloud_2.tscn" id="11_82ovt"]
 [ext_resource type="Texture2D" uid="uid://de2bqqpaccdn" path="res://assets/sand.png" id="12_6b3vq"]
 [ext_resource type="Texture2D" uid="uid://crmxqjwsfjhuw" path="res://assets/sky.png" id="12_hfnh4"]
+[ext_resource type="PackedScene" uid="uid://d3lp7mv1c3ff" path="res://scenes/Level/Clouds/cloud_3.tscn" id="12_hr0cp"]
+[ext_resource type="PackedScene" uid="uid://dj0guyfaajwvg" path="res://scenes/Level/Clouds/cloud_4.tscn" id="13_p151j"]
+[ext_resource type="PackedScene" uid="uid://djmpa1njvw51p" path="res://scenes/Level/Clouds/cloud_5.tscn" id="14_d6nej"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0xpgu")
@@ -65,7 +66,7 @@ texture = ExtResource("12_6b3vq")
 
 [node name="Cloud_Paralax" type="ParallaxBackground" parent="."]
 script = ExtResource("6_0y378")
-clouds = [ExtResource("7_stkdb"), ExtResource("8_of18d"), ExtResource("9_seqkq"), ExtResource("10_3hnd5"), ExtResource("11_1t5do")]
+clouds = [ExtResource("10_h6uvp"), ExtResource("11_82ovt"), ExtResource("12_hr0cp"), ExtResource("13_p151j"), ExtResource("14_d6nej")]
 
 [node name="clouds_layer0" type="ParallaxLayer" parent="Cloud_Paralax"]
 motion_scale = Vector2(0.1, 0.1)

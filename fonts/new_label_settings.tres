@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://c17ilplx0wiap"]
+
+[ext_resource type="FontFile" uid="uid://cmok75x4xo3v4" path="res://fonts/ISOCPEUR.ttf" id="1_a1wlx"]
+
+[resource]
+font = ExtResource("1_a1wlx")
+font_size = 69
+font_color = Color(0.698039, 0.588235, 0, 1)
+outline_size = 9
+outline_color = Color(0, 0, 0, 1)

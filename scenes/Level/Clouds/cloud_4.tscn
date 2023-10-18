@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj0guyfaajwvg"]
+
+[ext_resource type="PackedScene" uid="uid://v1mjv65k6xlk" path="res://scenes/Level/Clouds/i_cloud.tscn" id="1_mwt6s"]
+[ext_resource type="Texture2D" uid="uid://d3i3hyf4o2gvr" path="res://assets/chmara_4(large).png" id="2_gb6j3"]
+
+[node name="Cloud4" instance=ExtResource("1_mwt6s")]
+texture = ExtResource("2_gb6j3")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="0"]
+position = Vector2(3.8147e-06, -4.76837e-06)
+scale = Vector2(12.8, 4)
