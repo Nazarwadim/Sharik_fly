@@ -11,6 +11,7 @@ script = ExtResource("1_3pdiy")
 [node name="Player" parent="." instance=ExtResource("1_ssd4v")]
 position = Vector2(-2, -2)
 scale = Vector2(0.6, 0.6)
+speed = 400.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -150)
@@ -19,9 +20,13 @@ position = Vector2(0, -150)
 player = NodePath("../Player")
 metadata/_edit_lock_ = true
 
-[node name="UI" parent="." node_paths=PackedStringArray("game") instance=ExtResource("4_g2pyl")]
+[node name="UI" parent="." node_paths=PackedStringArray("game", "player") instance=ExtResource("4_g2pyl")]
 game = NodePath("..")
+player = NodePath("../Player")
 
 [node name="StartPosition" type="Marker2D" parent="."]
 
+[connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="on_died" from="Player" to="." method="_on_player_on_died"]
+[connection signal="on_died" from="Player" to="Level" method="_on_player_on_died"]

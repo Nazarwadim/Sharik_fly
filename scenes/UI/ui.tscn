@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgtietayb8gpk"]
+[gd_scene load_steps=10 format=3 uid="uid://bgtietayb8gpk"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
+[ext_resource type="Script" path="res://scenes/UI/Tools/Score.gd" id="2_80xu8"]
 [ext_resource type="LabelSettings" uid="uid://b63h4jabqxvhq" path="res://fonts/label_settings_for_score.tres" id="2_bvo4i"]
 [ext_resource type="Script" path="res://scenes/UI/control/ButtonUp.gd" id="2_qn8aw"]
 [ext_resource type="Texture2D" uid="uid://nll72mo2g1u2" path="res://assets/svg_icons/settings-cogwheel-svgrepo-com.svg" id="2_r2tdx"]
@@ -53,6 +54,7 @@ label_settings = SubResource("LabelSettings_0ygfx")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("2_80xu8")
 
 [node name="current" type="Label" parent="Tools/Score"]
 layout_mode = 0
@@ -69,9 +71,10 @@ offset_left = 117.0
 offset_top = 9.0
 offset_right = 334.0
 offset_bottom = 47.0
+text = "14test"
 label_settings = ExtResource("2_bvo4i")
 
-[node name="recordl" type="Label" parent="Tools/Score"]
+[node name="record" type="Label" parent="Tools/Score"]
 layout_mode = 0
 offset_left = 818.0
 offset_top = 584.0
@@ -80,20 +83,21 @@ offset_bottom = 627.0
 text = "record:"
 label_settings = SubResource("LabelSettings_0ygfx")
 
-[node name="Label" type="Label" parent="Tools/Score/recordl"]
+[node name="Label" type="Label" parent="Tools/Score/record"]
 layout_mode = 0
 offset_left = 104.0
 offset_top = 6.0
 offset_right = 325.0
 offset_bottom = 40.0
+text = "3test"
 label_settings = ExtResource("2_bvo4i")
 
 [node name="SettingsButton" type="TextureButton" parent="Tools"]
 layout_mode = 0
-offset_left = 1090.0
+offset_left = 1115.0
 offset_top = 1.0
 offset_right = 1150.0
-offset_bottom = 61.0
+offset_bottom = 36.0
 shortcut = SubResource("Shortcut_3mfom")
 texture_normal = ExtResource("2_r2tdx")
 ignore_texture_size = true

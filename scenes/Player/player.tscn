@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://siyrgo0l3anm"]
+[gd_scene load_steps=15 format=3 uid="uid://siyrgo0l3anm"]
 
 [ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="1_3eea3"]
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_7fqlr"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/Player/AnimationSprite.gd" id="9_fw8pp"]
 [ext_resource type="Script" path="res://scenes/Player/AirPresure.gd" id="10_hi8le"]
 [ext_resource type="Script" path="res://scenes/Player/Сontrol_of_physics.gd" id="12_uguv6"]
+[ext_resource type="Script" path="res://scenes/Player/ScoreController.gd" id="13_p4jpy"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr475"]
 animations = [{
@@ -87,6 +88,10 @@ ball = NodePath("..")
 
 [node name="Сontrol_of_physics" type="Node" parent="." node_paths=PackedStringArray("ball")]
 script = ExtResource("12_uguv6")
+ball = NodePath("..")
+
+[node name="ScoreController" type="Node" parent="." node_paths=PackedStringArray("ball")]
+script = ExtResource("13_p4jpy")
 ball = NodePath("..")
 
 [connection signal="area_entered" from="." to="Entered_kaktus" method="_on_player_area_entered"]

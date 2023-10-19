@@ -11,6 +11,7 @@ class_name Player
 signal on_state_changed(state:state)
 signal on_died
 var current_state:state 
+var high_score:int
 
 enum state{
 	idle,
@@ -27,9 +28,15 @@ func _physics_process(delta) -> void:
 	elif Input.is_action_pressed("up") && air_presure > 0 && not $AirPresure.block_airpresure_up:
 		change_state(state.up)
 	else:
-		change_state(state.idle)
+		change_state(state.idle)	
 	
 func change_state(state_:state):
 	if(state_ != current_state):
 		current_state = state_
 		on_state_changed.emit(current_state)
+
+func save():
+	var save_dict ={
+		"high_score": high_score
+	}
+	return save_dict

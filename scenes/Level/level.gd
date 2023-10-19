@@ -19,3 +19,7 @@ func _on_cloud_timer_timeout() -> void:
 	$Cloud_Paralax/Timer.wait_time = cloud_generation_frequency_dustance / player.speed
 	$Cloud_Paralax.generate_cloud(player)
 	on_cloud_generate.emit()
+
+func _on_player_on_died():
+	$Cloud_Paralax/Timer.stop()
+	$Kaktuses_generator/Timer.stop()
