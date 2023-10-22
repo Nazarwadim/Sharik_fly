@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://siyrgo0l3anm"]
+[gd_scene load_steps=17 format=3 uid="uid://siyrgo0l3anm"]
 
 [ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="1_3eea3"]
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_7fqlr"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://scenes/Player/AirPresure.gd" id="10_hi8le"]
 [ext_resource type="Script" path="res://scenes/Player/Сontrol_of_physics.gd" id="12_uguv6"]
 [ext_resource type="Script" path="res://scenes/Player/ScoreController.gd" id="13_p4jpy"]
+[ext_resource type="Material" uid="uid://c6qnslof7wkc4" path="res://materials/Player.tres" id="14_qkv5y"]
+[ext_resource type="Script" path="res://scenes/Player/Particles.gd" id="15_hjkr4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr475"]
 animations = [{
@@ -94,5 +96,14 @@ ball = NodePath("..")
 script = ExtResource("13_p4jpy")
 ball = NodePath("..")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 2
+process_material = ExtResource("14_qkv5y")
+texture = ExtResource("3_egrak")
+lifetime = 0.2
+trail_enabled = true
+script = ExtResource("15_hjkr4")
+
 [connection signal="area_entered" from="." to="Entered_kaktus" method="_on_player_area_entered"]
 [connection signal="on_state_changed" from="." to="AnimatedSprite2D" method="_on_player_on_state_changed"]
+[connection signal="on_state_changed" from="." to="GPUParticles2D" method="_on_player_on_state_changed"]
