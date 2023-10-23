@@ -1,8 +1,4 @@
-extends Button
-
-
-
-
+extends TouchScreenButton
 
 func _on_button_down():
 	Input.action_press("up")

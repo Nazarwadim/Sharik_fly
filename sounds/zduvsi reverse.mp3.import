@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://byhtoqv01jn6i"
+path="res://.godot/imported/zduvsi reverse.mp3-1ee82fadb45264b563b20da678b32828.mp3str"
+
+[deps]
+
+source_file="res://sounds/zduvsi reverse.mp3"
+dest_files=["res://.godot/imported/zduvsi reverse.mp3-1ee82fadb45264b563b20da678b32828.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

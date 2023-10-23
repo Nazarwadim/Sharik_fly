@@ -13,5 +13,3 @@ func _on_player_on_state_changed(state) -> void:
 		play("down")
 	elif state == ball.state.die:
 		play("die")
-	else:
-		printerr("Error in Player state. You add aditional state!!!! AnimatedSprite.gd 15")

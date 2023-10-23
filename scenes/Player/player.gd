@@ -1,16 +1,20 @@
 extends Area2D
 class_name Player
-@export var speed:float = 200
-@export var speed_increase:float = 1
+@export var start_speed:float = 200
+@export var start_speed_increase:float = 1
 @export var move_toward_y:float
 @export var air_presure:float = 20
 @export var air_presure_restoration:float = 30
 @export var air_presure_restoration_while_down:float = 40
 @export var air_presure_decrease_decrease:float = 70
-@onready var velocity = Vector2(speed, 0)
+@onready var velocity = Vector2(start_speed, 0)
 signal on_state_changed(state:state)
 signal on_died
-var current_state:state 
+signal on_restart
+@onready var speed = start_speed
+@onready var speed_increase = start_speed_increase
+
+var current_state:state = -1
 var high_score:int
 
 enum state{
@@ -19,6 +23,10 @@ enum state{
 	down,
 	die
 }
+
+
+func _ready():
+	change_state(state.idle)
 
 func _physics_process(delta) -> void:	
 	if current_state == state.die:
@@ -34,6 +42,9 @@ func change_state(state_:state):
 	if(state_ != current_state):
 		current_state = state_
 		on_state_changed.emit(current_state)
+		
+func restart(continue_to_play:bool):
+	$Restart.sharic_restart( continue_to_play )
 
 func save():
 	var save_dict ={

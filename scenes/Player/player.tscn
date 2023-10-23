@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://siyrgo0l3anm"]
+[gd_scene load_steps=22 format=3 uid="uid://siyrgo0l3anm"]
 
 [ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="1_3eea3"]
 [ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_7fqlr"]
@@ -15,17 +15,22 @@
 [ext_resource type="Script" path="res://scenes/Player/ScoreController.gd" id="13_p4jpy"]
 [ext_resource type="Material" uid="uid://c6qnslof7wkc4" path="res://materials/Player.tres" id="14_qkv5y"]
 [ext_resource type="Script" path="res://scenes/Player/Particles.gd" id="15_hjkr4"]
+[ext_resource type="Script" path="res://scenes/Player/Restart.gd" id="16_p4mkh"]
+[ext_resource type="AudioStream" uid="uid://c8qrx1j46akn4" path="res://sounds/lopnuv.mp3" id="17_6i8gm"]
+[ext_resource type="Script" path="res://scenes/Player/SoundControler.gd" id="17_7dd3l"]
+[ext_resource type="AudioStream" uid="uid://cuavehukfnek2" path="res://sounds/zduvsi.mp3" id="19_atpgr"]
+[ext_resource type="AudioStream" uid="uid://byhtoqv01jn6i" path="res://sounds/zduvsi reverse.mp3" id="20_apd8t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_kr475"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": ExtResource("2_linoh")
 }, {
-"duration": 0.5,
+"duration": 0.25,
 "texture": ExtResource("3_g40jq")
 }, {
-"duration": 0.5,
+"duration": 0.2,
 "texture": ExtResource("4_5tuor")
 }],
 "loop": true,
@@ -69,13 +74,14 @@ animations = [{
 [node name="Player" type="Area2D"]
 modulate = Color(1, 1, 1, 0.772549)
 script = ExtResource("1_7fqlr")
-speed_increase = 10.0
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kr475")
-animation = &"idle"
+animation = &"die"
+frame = 2
+frame_progress = 0.139585
 script = ExtResource("9_fw8pp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
@@ -97,6 +103,7 @@ script = ExtResource("13_p4jpy")
 ball = NodePath("..")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+scale = Vector2(1, 1.36346)
 amount = 2
 process_material = ExtResource("14_qkv5y")
 texture = ExtResource("3_egrak")
@@ -104,6 +111,25 @@ lifetime = 0.2
 trail_enabled = true
 script = ExtResource("15_hjkr4")
 
+[node name="Restart" type="Node" parent="."]
+script = ExtResource("16_p4mkh")
+
+[node name="SoundControler" type="Node" parent="."]
+script = ExtResource("17_7dd3l")
+
+[node name="LopnuvSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("17_6i8gm")
+mix_target = 2
+
+[node name="UpSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("19_atpgr")
+volume_db = -15.0
+
+[node name="DownSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("20_apd8t")
+volume_db = -15.0
+
 [connection signal="area_entered" from="." to="Entered_kaktus" method="_on_player_area_entered"]
 [connection signal="on_state_changed" from="." to="AnimatedSprite2D" method="_on_player_on_state_changed"]
 [connection signal="on_state_changed" from="." to="GPUParticles2D" method="_on_player_on_state_changed"]
+[connection signal="on_state_changed" from="." to="SoundControler" method="_on_player_on_state_changed"]

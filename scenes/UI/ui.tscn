@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bgtietayb8gpk"]
+[gd_scene load_steps=15 format=3 uid="uid://bgtietayb8gpk"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
 [ext_resource type="Script" path="res://scenes/UI/Tools/Score.gd" id="2_80xu8"]
 [ext_resource type="LabelSettings" uid="uid://b63h4jabqxvhq" path="res://fonts/label_settings_for_score.tres" id="2_bvo4i"]
+[ext_resource type="Script" path="res://scenes/UI/Tools/AirBar.gd" id="2_qmmkx"]
 [ext_resource type="Script" path="res://scenes/UI/control/ButtonUp.gd" id="2_qn8aw"]
 [ext_resource type="Texture2D" uid="uid://nll72mo2g1u2" path="res://assets/svg_icons/settings-cogwheel-svgrepo-com.svg" id="2_r2tdx"]
 [ext_resource type="Script" path="res://scenes/UI/Tools/SettingsButton.gd" id="4_8jxon"]
@@ -14,6 +15,16 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Shortcut" id="Shortcut_3mfom"]
+
+[sub_resource type="Gradient" id="Gradient_8hfbq"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjqd1"]
+gradient = SubResource("Gradient_8hfbq")
+
+[sub_resource type="Gradient" id="Gradient_i4exs"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8gb0"]
+gradient = SubResource("Gradient_i4exs")
 
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
@@ -31,15 +42,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="AirBar" type="ProgressBar" parent="Tools/Air"]
-modulate = Color(0.239216, 0.172549, 0.882353, 1)
+modulate = Color(0.372549, 0.0470588, 1, 1)
 layout_mode = 0
 offset_left = 174.0
 offset_top = 603.0
 offset_right = 380.0
 offset_bottom = 643.0
+scale = Vector2(0.998417, 1)
 value = 20.0
 rounded = true
 show_percentage = false
+script = ExtResource("2_qmmkx")
 
 [node name="Label" type="Label" parent="Tools/Air"]
 layout_mode = 0
@@ -51,7 +64,7 @@ text = "air presure:"
 label_settings = SubResource("LabelSettings_0ygfx")
 
 [node name="Score" type="Control" parent="Tools"]
-anchors_preset = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_80xu8")
@@ -112,29 +125,25 @@ offset_right = 1151.0
 offset_bottom = 652.0
 metadata/_edit_lock_ = true
 
-[node name="ButtonUp" type="Button" parent="Control"]
+[node name="ButtonUp" type="TouchScreenButton" parent="Control"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -2.0
-offset_top = 67.0
-offset_right = 1149.0
-offset_bottom = 399.0
+position = Vector2(0, -21)
+scale = Vector2(4.49609, 295)
+texture_normal = SubResource("GradientTexture1D_tjqd1")
 script = ExtResource("2_qn8aw")
-metadata/_edit_lock_ = true
 
-[node name="ButtonDown" type="Button" parent="Control"]
+[node name="ButtonDown" type="TouchScreenButton" parent="Control"]
 modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = 1.0
-offset_top = 416.0
-offset_right = 1148.0
-offset_bottom = 646.0
+position = Vector2(9.53674e-07, 275)
+scale = Vector2(4.49609, 304)
+texture_normal = SubResource("GradientTexture1D_v8gb0")
 script = ExtResource("6_wv5ak")
-metadata/_edit_lock_ = true
 
+[connection signal="value_changed" from="Tools/Air/AirBar" to="Tools/Air/AirBar" method="_on_value_changed"]
 [connection signal="button_down" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_down"]
 [connection signal="button_up" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_up"]
-[connection signal="button_down" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_down"]
-[connection signal="button_up" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_up"]
-[connection signal="button_down" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
-[connection signal="button_up" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]
+[connection signal="pressed" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_pressed"]
+[connection signal="pressed" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_down"]
+[connection signal="released" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_up"]
+[connection signal="pressed" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
+[connection signal="released" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]

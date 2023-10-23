@@ -5,8 +5,7 @@ extends Node2D
 signal on_kaktus_generate
 signal on_cloud_generate
 
-func _ready() -> void:
-	RandomNumberGenerator.new()
+
 	
 func on_generate_timer_timeout() -> void:
 	$Kaktuses_generator/Timer.wait_time = kaktuses_generation_frequency_distance / player.speed
@@ -23,3 +22,9 @@ func _on_cloud_timer_timeout() -> void:
 func _on_player_on_died():
 	$Cloud_Paralax/Timer.stop()
 	$Kaktuses_generator/Timer.stop()
+
+
+func _on_player_on_restart():
+	$Cloud_Paralax/Timer.start()
+	$Kaktuses_generator/Timer.start()
+

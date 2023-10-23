@@ -2,6 +2,7 @@ extends Node
 @export var ball:Player
 
 func _physics_process(delta) -> void:
+
 	ball.speed += ball.speed_increase * delta
 	
 	if ball.current_state == ball.state.idle:
@@ -16,5 +17,5 @@ func _physics_process(delta) -> void:
 	elif ball.current_state == ball.state.up:
 		ball.velocity.y = -0.5 * ball.velocity.x
 	
-	ball.position.y = clampf(ball.position.y, -1000, 0)
 	ball.position += ball.velocity * delta 
+	ball.position.y = clampf(ball.position.y, -1000, 0)

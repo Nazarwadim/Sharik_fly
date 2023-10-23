@@ -11,13 +11,15 @@ script = ExtResource("1_3pdiy")
 [node name="Player" parent="." instance=ExtResource("1_ssd4v")]
 position = Vector2(-2, -2)
 scale = Vector2(0.6, 0.6)
-speed = 400.0
+start_speed = 350.0
+start_speed_increase = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -150)
 
 [node name="Level" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6hhgd")]
 player = NodePath("../Player")
+kaktuses_generation_frequency_distance = 600.0
 metadata/_edit_lock_ = true
 
 [node name="UI" parent="." node_paths=PackedStringArray("game", "player") instance=ExtResource("4_g2pyl")]
@@ -28,5 +30,6 @@ player = NodePath("../Player")
 
 [connection signal="tree_entered" from="." to="." method="_on_tree_entered"]
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
-[connection signal="on_died" from="Player" to="." method="_on_player_on_died"]
 [connection signal="on_died" from="Player" to="Level" method="_on_player_on_died"]
+[connection signal="on_restart" from="Player" to="Level" method="_on_player_on_restart"]
+[connection signal="restart_button_clicked" from="UI" to="." method="_on_ui_restart_button_clicked"]

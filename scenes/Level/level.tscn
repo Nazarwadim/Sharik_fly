@@ -34,13 +34,12 @@ motion_mirroring = Vector2(2500, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/sky_layer"]
 texture_filter = 1
-offset_left = -8.0
-offset_top = -704.0
-offset_right = 2504.0
+offset_left = -10.0
+offset_top = -921.0
+offset_right = 2502.0
 offset_bottom = 232.0
-rotation = -0.00853518
+rotation = -0.0161228
 texture = ExtResource("12_hfnh4")
-metadata/_edit_lock_ = true
 
 [node name="mountain_layer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.3, 0.3)
