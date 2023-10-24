@@ -79,9 +79,7 @@ metadata/_edit_group_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kr475")
-animation = &"die"
-frame = 2
-frame_progress = 0.139585
+animation = &"idle"
 script = ExtResource("9_fw8pp")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

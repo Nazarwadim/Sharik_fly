@@ -1,0 +1,154 @@
+[gd_scene load_steps=24 format=3 uid="uid://cbor71jd0a0wx"]
+
+[ext_resource type="Script" path="res://scenes/Ball/ball.gd" id="1_88cyq"]
+[ext_resource type="Texture2D" uid="uid://b2s8yj54dxq85" path="res://assets/Ball_die_1.png" id="1_gtxrs"]
+[ext_resource type="Script" path="res://scenes/Ball/Phisics.gd" id="2_hmx57"]
+[ext_resource type="Texture2D" uid="uid://6kgarcrs05u6" path="res://assets/Ball_die_2.png" id="2_qbaq7"]
+[ext_resource type="Texture2D" uid="uid://0pau4kpvd8ps" path="res://assets/Ball_die_3.png" id="3_5xqty"]
+[ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="4_l3c13"]
+[ext_resource type="Texture2D" uid="uid://bj15a2rewf4l7" path="res://assets/Ball_3.png" id="5_vn4et"]
+[ext_resource type="Texture2D" uid="uid://dtjydu7q3w1br" path="res://assets/Ball_1.png" id="6_bs3kd"]
+[ext_resource type="Texture2D" uid="uid://bbd8b4rg82yip" path="res://assets/Ball_4.png" id="7_87u7d"]
+[ext_resource type="Material" uid="uid://c6qnslof7wkc4" path="res://materials/Player.tres" id="8_u8kjp"]
+[ext_resource type="AudioStream" uid="uid://c8qrx1j46akn4" path="res://sounds/lopnuv.mp3" id="9_e3w0f"]
+[ext_resource type="AudioStream" uid="uid://cuavehukfnek2" path="res://sounds/zduvsi.mp3" id="10_nf1lp"]
+[ext_resource type="Script" path="res://scenes/Ball/SoundControler.gd" id="10_y2l8a"]
+[ext_resource type="AudioStream" uid="uid://byhtoqv01jn6i" path="res://sounds/zduvsi reverse.mp3" id="11_c7w1i"]
+[ext_resource type="Script" path="res://scenes/Ball/AirPresure.gd" id="11_l8x2v"]
+[ext_resource type="Script" path="res://scenes/StateMashine/StateMashine.gd" id="12_ndfgc"]
+[ext_resource type="Script" path="res://scenes/Ball/StateReady.gd" id="13_uy5xt"]
+[ext_resource type="Script" path="res://scenes/Ball/HighestScore.gd" id="14_f5hhi"]
+[ext_resource type="Script" path="res://scenes/Ball/StateIdle.gd" id="14_h2ol1"]
+[ext_resource type="Script" path="res://scenes/Ball/StateDown.gd" id="15_64y08"]
+[ext_resource type="Script" path="res://scenes/Ball/StateUp.gd" id="16_ysclx"]
+[ext_resource type="Script" path="res://scenes/Ball/StateDie.gd" id="17_xvhhq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k614o"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_gtxrs")
+}, {
+"duration": 0.25,
+"texture": ExtResource("2_qbaq7")
+}, {
+"duration": 0.2,
+"texture": ExtResource("3_5xqty")
+}],
+"loop": true,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l3c13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vn4et")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_l3c13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_bs3kd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_87u7d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_l3c13")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="Ball" type="Area2D"]
+script = ExtResource("1_88cyq")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_k614o")
+animation = &"die"
+frame_progress = 0.379655
+
+[node name="CollisionPolygon" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -2)
+polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 5, 29, 10, 29, 10, 22, 32, 16)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 2
+process_material = ExtResource("8_u8kjp")
+texture = ExtResource("4_l3c13")
+lifetime = 0.3
+
+[node name="HighestScore" type="Node" parent="."]
+script = ExtResource("14_f5hhi")
+
+[node name="AirPresure" type="Node" parent="."]
+script = ExtResource("11_l8x2v")
+
+[node name="Phisics" type="Node" parent="."]
+script = ExtResource("2_hmx57")
+
+[node name="SoundControler" type="Node" parent="."]
+script = ExtResource("10_y2l8a")
+
+[node name="LopnuvSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("9_e3w0f")
+mix_target = 2
+
+[node name="UpSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("10_nf1lp")
+volume_db = -5.0
+
+[node name="DownSound" type="AudioStreamPlayer" parent="SoundControler"]
+stream = ExtResource("11_c7w1i")
+volume_db = -5.0
+
+[node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("object", "animation", "current_state")]
+script = ExtResource("12_ndfgc")
+object = NodePath("..")
+animation = NodePath("../AnimatedSprite")
+current_state = NodePath("StateReady")
+
+[node name="StateReady" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_idle")]
+script = ExtResource("13_uy5xt")
+state_idle = NodePath("../StateIdle")
+can_move = false
+
+[node name="StateIdle" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_down", "state_up", "state_die")]
+script = ExtResource("14_h2ol1")
+state_down = NodePath("../StateDown")
+state_up = NodePath("../StateUp")
+state_die = NodePath("../StateDie")
+
+[node name="StateDown" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_idle", "state_up", "state_die")]
+script = ExtResource("15_64y08")
+state_idle = NodePath("../StateIdle")
+state_up = NodePath("../StateUp")
+state_die = NodePath("../StateDie")
+
+[node name="StateUp" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_down", "state_idle", "state_die")]
+script = ExtResource("16_ysclx")
+state_down = NodePath("../StateDown")
+state_idle = NodePath("../StateIdle")
+state_die = NodePath("../StateDie")
+
+[node name="StateDie" type="Node" parent="StateMashine"]
+script = ExtResource("17_xvhhq")
+can_move = false
+
+[connection signal="tree_entered" from="HighestScore" to="HighestScore" method="_load_score"]
+[connection signal="tree_exiting" from="HighestScore" to="HighestScore" method="_save_score"]
