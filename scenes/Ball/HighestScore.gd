@@ -30,6 +30,7 @@ func _load_score():
 
 func update_highest_score(ball_position) -> void:
 	SignalBus.on_score_changed.emit(self, ball_position.x)
+	SignalBus.on_highest_score_changed.emit(self, highest_score)
 	if highest_score < ball_position.x:
 		highest_score = ball_position.x
-		SignalBus.on_highest_score_changed.emit(self, highest_score)
+

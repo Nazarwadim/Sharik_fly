@@ -1,5 +1,10 @@
 extends ProgressBar
 
+func _ready():
+	SignalBus.on_airpresure_changed.connect(_set_value)
+	
+func _set_value(air_presure:AirPresure):
+	value = air_presure.value
 
 func _on_value_changed(value):
 	if value < 30:

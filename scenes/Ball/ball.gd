@@ -11,16 +11,13 @@ class_name Ball
 @onready var air_presure:AirPresure = $AirPresure
 @onready var phisics:BallPhisics = $Phisics
 @onready var sound_controler:BallSoundController = $SoundControler
+@onready var trail:GPUParticles2D = $Trail
 
 func _process(delta) -> void:
 	$HighestScore.update_highest_score(position)
 	
 func _physics_process(delta) -> void:
 	position += phisics.velocity * delta 
-	position.y = clampf(position.y, -1000, 100)
+	position.y = clampf(position.y, -1000, 0)
 
 
-
-
-func kaktus_entered(area):
-	pass # Replace with function body.

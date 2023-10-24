@@ -1,5 +1,12 @@
 extends Control
 
-func _physics_process(delta) -> void:
-	$current/Label.text = str( int(get_parent().get_parent().player.position.x) )
-	$record/Label.text = str( int(get_parent().get_parent().player.high_score) )
+func _ready():
+	SignalBus.on_score_changed.connect(_update_score)
+	SignalBus.on_highest_score_changed.connect(_update_highest_score)
+
+func _update_score(node:Node, score:float):
+	$current/Label.text = str( int( score ) )
+	
+
+func _update_highest_score(node:Node, score:float):
+	$record/Label.text = str( int( score ) )

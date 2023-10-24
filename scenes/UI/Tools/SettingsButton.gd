@@ -16,8 +16,3 @@ func _on_button_up():
 	tween.tween_property(self, "size", Vector2(60,60),0.2)
 	tween.tween_property(self, "position", Vector2(1090,1),0.2)
 	tween.play()
-	
-
-
-func _on_pressed():
-	get_parent().get_parent().restart_button_clicked.emit()

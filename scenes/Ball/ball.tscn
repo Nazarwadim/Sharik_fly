@@ -87,11 +87,12 @@ frame_progress = 0.379655
 position = Vector2(0, -2)
 polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 5, 29, 10, 29, 10, 22, 32, 16)
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+[node name="Trail" type="GPUParticles2D" parent="."]
 amount = 2
 process_material = ExtResource("8_u8kjp")
 texture = ExtResource("4_l3c13")
-lifetime = 0.3
+lifetime = 0.2
+trail_enabled = true
 
 [node name="HighestScore" type="Node" parent="."]
 script = ExtResource("14_f5hhi")
@@ -150,5 +151,6 @@ state_die = NodePath("../StateDie")
 script = ExtResource("17_xvhhq")
 can_move = false
 
+[connection signal="area_entered" from="." to="StateMashine/StateDie" method="kaktus_entered"]
 [connection signal="tree_entered" from="HighestScore" to="HighestScore" method="_load_score"]
 [connection signal="tree_exiting" from="HighestScore" to="HighestScore" method="_save_score"]

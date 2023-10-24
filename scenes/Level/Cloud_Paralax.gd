@@ -2,13 +2,13 @@ extends ParallaxBackground
 class_name Clouds_generator
 @export var clouds:Array
 
-func generate_cloud(player:Player) -> void:
+func generate_cloud(player:Area2D) -> void:
 	var first = randi_range(0,2)
 	if first == 2:
 		return
 	_add_cloud( randi_range(0, clouds.size() - 1), randi_range(-100, 390), randi_range(0,2) , player)
 		
-func _add_cloud(generated_index:int, generated_hight:int, generated_layer_index , player:Player) -> void:
+func _add_cloud(generated_index:int, generated_hight:int, generated_layer_index , player:Area2D) -> void:
 	var cloud = clouds[generated_index].instantiate()
 	var scale_x = get_node("clouds_layer" + str(generated_layer_index)).get("motion_scale").x;
 	cloud.position = Vector2(1300 + player.position.x * scale_x, generated_hight * scale_x)

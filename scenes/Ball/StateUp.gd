@@ -4,6 +4,7 @@ extends State
 @export var state_idle:State
 @export var state_die:State
 func on_enter():
+	ball.trail.trail_enabled = false
 	_play_sound()
 	animation.play("up")
 	
@@ -19,9 +20,10 @@ func _input_():
 		next_state = state_down
 	else:
 		next_state = state_idle
-
-#$UpSound.pitch_scale = $UpSound.stream.get_length() / ( 100 / player.air_presure_decrease_decrease)
-#$UpSound.play( abs( $UpSound.stream.get_length() * (100 - player.air_presure) / 100 - 0.1 ) )
+		
+func on_exit():
+	ball.trail.trail_enabled = true
+		
 func _play_sound():
 	var length = ball.sound_controler.get_sound_length("UpSound")
 	var pitch_scale:float =abs( length / (100 / ball.air_presure_decrease) )
