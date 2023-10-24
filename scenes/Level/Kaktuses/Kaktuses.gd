@@ -9,10 +9,10 @@ func generate_kaktus(player:Player) -> void:
 		return
 	for i in range(0,randi_range(1,4)):
 		await  get_tree().create_timer((kaktus_width + 2)/player.speed).timeout
-		add_kaktuse( randi_range(0,kaktuses.size() - 1), randf_range(-10,10) , player)
+		_add_kaktuse( randi_range(0,kaktuses.size() - 1), randf_range(-10,10) , player)
 	
 	
-func add_kaktuse(generated_index:int, generated_position_y:float,player:Player) -> void:
+func _add_kaktuse(generated_index:int, generated_position_y:float,player:Player) -> void:
 	var kaktus:Area2D = kaktuses[generated_index].instantiate()
 	kaktus_width = kaktus.get_node("VisibleOnScreenNotifier2D").scale.x * 10 
 	kaktus.position.x = player.position.x + 1000

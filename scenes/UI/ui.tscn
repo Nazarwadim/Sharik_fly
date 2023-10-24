@@ -65,6 +65,7 @@ label_settings = SubResource("LabelSettings_0ygfx")
 
 [node name="Score" type="Control" parent="Tools"]
 layout_mode = 1
+anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("2_80xu8")

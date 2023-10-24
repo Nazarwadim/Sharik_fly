@@ -123,11 +123,11 @@ mix_target = 2
 
 [node name="UpSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("19_atpgr")
-volume_db = -15.0
+volume_db = -8.0
 
 [node name="DownSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("20_apd8t")
-volume_db = -15.0
+volume_db = -8.0
 
 [connection signal="area_entered" from="." to="Entered_kaktus" method="_on_player_area_entered"]
 [connection signal="on_state_changed" from="." to="AnimatedSprite2D" method="_on_player_on_state_changed"]
