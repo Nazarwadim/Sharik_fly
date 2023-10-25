@@ -24,7 +24,6 @@ script = ExtResource("2_ugwwj")
 kaktuses = [ExtResource("3_pv55c"), ExtResource("4_aife5"), ExtResource("5_w8wx1")]
 
 [node name="Timer" type="Timer" parent="Kaktuses_generator"]
-autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -81,7 +80,6 @@ motion_scale = Vector2(0.2, 0.2)
 motion_scale = Vector2(0.4, 0.4)
 
 [node name="Timer" type="Timer" parent="Cloud_Paralax"]
-autostart = true
 
 [connection signal="timeout" from="Kaktuses_generator/Timer" to="." method="on_generate_timer_timeout"]
 [connection signal="timeout" from="Cloud_Paralax/Timer" to="." method="_on_cloud_timer_timeout"]

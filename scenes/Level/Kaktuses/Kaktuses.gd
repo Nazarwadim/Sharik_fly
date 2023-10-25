@@ -18,4 +18,4 @@ func _add_kaktuse(generated_index:int, generated_position_y:float,player:Area2D)
 	kaktus.position.x = player.position.x + 1000
 	kaktus.position.y = generated_position_y
 	add_child(kaktus)
-			
+

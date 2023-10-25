@@ -11,6 +11,7 @@ script = ExtResource("1_3pdiy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -150)
+scale = Vector2(1, 1)
 
 [node name="Level" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6hhgd")]
 player = NodePath("../Ball")
