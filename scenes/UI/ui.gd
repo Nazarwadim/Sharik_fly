@@ -7,4 +7,3 @@ func _ready():
 	
 func start():
 	show()
-	

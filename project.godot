@@ -25,6 +25,8 @@ settings/stdout/print_fps=true
 
 [display]
 
+window/size/initial_position_type=0
+window/size/always_on_top=true
 window/stretch/mode="canvas_items"
 
 [dotnet]

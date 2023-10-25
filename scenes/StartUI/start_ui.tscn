@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxh3tys25wmmw"]
+[gd_scene load_steps=11 format=3 uid="uid://cxh3tys25wmmw"]
 
 [ext_resource type="FontFile" uid="uid://cmok75x4xo3v4" path="res://fonts/ISOCPEUR.ttf" id="1_h4l1h"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_ycwd7"]
 [ext_resource type="Script" path="res://scenes/StartUI/StartButton.gd" id="3_tcist"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6icu7"]
-size = Vector2(394, 168)
+size = Vector2(1098, 703)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rgdp8"]
 shader = ExtResource("1_ycwd7")
@@ -13,6 +13,13 @@ shader = ExtResource("1_ycwd7")
 [sub_resource type="Theme" id="Theme_5s636"]
 default_font = ExtResource("1_h4l1h")
 default_font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_lnbhg"]
+font = ExtResource("1_h4l1h")
+font_size = 110
+font_color = Color(1, 1, 0.729412, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fkn5"]
 size = Vector2(658.5, 60)
@@ -29,33 +36,40 @@ height = 60
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2(92, 74)
+position = Vector2(-12, 181.5)
 shape = SubResource("RectangleShape2D_6icu7")
 
 [node name="ColorRect" type="ColorRect" parent="RigidBody2D"]
 material = SubResource("ShaderMaterial_rgdp8")
-offset_left = -104.0
-offset_top = -11.0
-offset_right = 290.0
-offset_bottom = 160.0
+offset_left = -616.0
+offset_top = -180.0
+offset_right = 612.0
+offset_bottom = 507.0
 color = Color(1, 0.572549, 1, 0.498039)
 
-[node name="StartButton" type="Button" parent="RigidBody2D"]
-offset_left = -114.0
-offset_top = -12.0
-offset_right = 295.0
-offset_bottom = 161.0
+[node name="StartButton" type="Control" parent="RigidBody2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -640.0
+offset_top = -178.0
+offset_right = 620.0
+offset_bottom = 531.0
 theme = SubResource("Theme_5s636")
-text = "Tap to
-Start?"
-flat = true
 script = ExtResource("3_tcist")
 
+[node name="Label" type="Label" parent="RigidBody2D/StartButton"]
+layout_mode = 0
+offset_left = 311.0
+offset_top = 250.0
+offset_right = 960.0
+offset_bottom = 646.0
+text = "Tap to start!!!!"
+label_settings = SubResource("LabelSettings_lnbhg")
+
 [node name="RigidBody2D2" type="StaticBody2D" parent="."]
-position = Vector2(9, 784)
+position = Vector2(-11, 1443)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
@@ -71,4 +85,4 @@ texture = SubResource("GradientTexture2D_ae8jl")
 
 [node name="StartButtonPosition" type="Marker2D" parent="."]
 
-[connection signal="pressed" from="RigidBody2D/StartButton" to="RigidBody2D/StartButton" method="_on_pressed"]
+[connection signal="gui_input" from="RigidBody2D/StartButton" to="RigidBody2D/StartButton" method="_on_gui_input"]

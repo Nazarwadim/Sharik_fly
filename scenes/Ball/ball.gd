@@ -13,8 +13,8 @@ class_name Ball
 @onready var sound_controler:BallSoundController = $SoundControler
 @onready var trail:GPUParticles2D = $Trail
 
-
 func _process(delta) -> void:
+	
 	$HighestScore.update_highest_score(position)
 
 	

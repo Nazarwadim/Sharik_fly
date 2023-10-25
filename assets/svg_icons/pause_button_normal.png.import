@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nll72mo2g1u2"
-path="res://.godot/imported/settings-cogwheel-svgrepo-com.svg-9f117b8426315e6b30ecd8d5e9ba7ef3.ctex"
+uid="uid://dn1vmuj6ws0no"
+path="res://.godot/imported/pause_button_normal.png-8af6d542e705352a2bf2bd66aee4fff3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/svg_icons/settings-cogwheel-svgrepo-com.svg"
-dest_files=["res://.godot/imported/settings-cogwheel-svgrepo-com.svg-9f117b8426315e6b30ecd8d5e9ba7ef3.ctex"]
+source_file="res://assets/svg_icons/pause_button_normal.png"
+dest_files=["res://.godot/imported/pause_button_normal.png-8af6d542e705352a2bf2bd66aee4fff3.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

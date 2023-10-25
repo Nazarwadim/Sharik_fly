@@ -7,7 +7,11 @@ signal on_cloud_generate
 
 func _ready():
 	SignalBus.on_start_button_preased.connect(start_generation)
-
+	SignalBus.player_died.connect(stop_generation)
+	
+func stop_generation(balL):
+	$Kaktuses_generator/Timer.stop()
+	$Cloud_Paralax/Timer.stop()
 	
 func on_generate_timer_timeout() -> void:
 	$Kaktuses_generator/Timer.wait_time = kaktuses_generation_frequency_distance / player.phisics.speed

@@ -85,7 +85,7 @@ frame_progress = 0.379655
 
 [node name="CollisionPolygon" type="CollisionPolygon2D" parent="."]
 position = Vector2(0, -2)
-polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 5, 29, 10, 29, 10, 22, 32, 16)
+polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 5, 33, 10, 30, 10, 22, 32, 16)
 
 [node name="Trail" type="GPUParticles2D" parent="."]
 amount = 2
@@ -112,11 +112,11 @@ mix_target = 2
 
 [node name="UpSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("10_nf1lp")
-volume_db = -5.0
+volume_db = -3.0
 
 [node name="DownSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("11_c7w1i")
-volume_db = -5.0
+volume_db = -3.0
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("object", "animation", "current_state")]
 script = ExtResource("12_ndfgc")
