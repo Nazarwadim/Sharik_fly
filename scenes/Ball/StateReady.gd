@@ -1,5 +1,6 @@
 extends State
 @export var state_idle:State
+@export var state_die:State
 func on_enter():
 	if ball.phisics != null:
 		ball.phisics.speed = 0
@@ -7,6 +8,7 @@ func on_enter():
 	ball.show()
 	animation.play("idle")
 	SignalBus.on_start_button_preased.connect(exit)
+	ball.area_entered.connect(state_die.kaktus_entered)
 
 func exit():
 	SignalBus.disconnect("on_start_button_preased",exit)

@@ -143,7 +143,6 @@ texture_normal = SubResource("GradientTexture1D_v8gb0")
 script = ExtResource("6_wv5ak")
 
 [node name="GUi" type="ColorRect" parent="."]
-process_mode = 3
 visible = false
 material = SubResource("ShaderMaterial_kmhyf")
 offset_right = 1156.0
@@ -152,14 +151,15 @@ offset_bottom = 655.0
 [node name="Label" type="Label" parent="GUi"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 383.0
-offset_top = 152.0
-offset_right = 779.0
-offset_bottom = 252.0
-text = "Pause Mode!!!!!!"
+offset_left = 367.0
+offset_top = 214.0
+offset_right = 787.0
+offset_bottom = 314.0
+text = "Game Paused!!!!!!"
 label_settings = ExtResource("11_dndq7")
 
 [node name="RestartButton" type="TextureButton" parent="GUi"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 1028.0
 offset_top = 532.0
@@ -173,17 +173,16 @@ script = ExtResource("9_xjwd0")
 
 [node name="HomeButton" type="Button" parent="GUi"]
 layout_mode = 0
-offset_left = 384.0
-offset_top = 222.0
-offset_right = 768.0
-offset_bottom = 319.0
+offset_left = 385.0
+offset_top = 271.0
+offset_right = 769.0
+offset_bottom = 368.0
 theme = SubResource("Theme_chv10")
 text = "Go home"
 script = ExtResource("12_d6jv5")
 
-[node name="PauseButton" type="TextureButton" parent="."]
+[node name="SettingsButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
-process_mode = 3
 offset_left = 1086.0
 offset_top = 12.0
 offset_right = 1121.0
@@ -202,5 +201,5 @@ script = ExtResource("4_8jxon")
 [connection signal="pressed" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
 [connection signal="released" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]
 [connection signal="pressed" from="GUi/HomeButton" to="GUi/HomeButton" method="_on_pressed"]
-[connection signal="toggled" from="PauseButton" to="." method="_on_settings_button_toggled"]
-[connection signal="toggled" from="PauseButton" to="PauseButton" method="_on_toggled"]
+[connection signal="toggled" from="SettingsButton" to="." method="_on_settings_button_toggled"]
+[connection signal="toggled" from="SettingsButton" to="SettingsButton" method="_on_toggled"]

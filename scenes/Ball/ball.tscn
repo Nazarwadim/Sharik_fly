@@ -124,9 +124,10 @@ object = NodePath("..")
 animation = NodePath("../AnimatedSprite")
 current_state = NodePath("StateReady")
 
-[node name="StateReady" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_idle")]
+[node name="StateReady" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_idle", "state_die")]
 script = ExtResource("13_uy5xt")
 state_idle = NodePath("../StateIdle")
+state_die = NodePath("../StateDie")
 can_move = false
 
 [node name="StateIdle" type="Node" parent="StateMashine" node_paths=PackedStringArray("state_down", "state_up", "state_die")]
@@ -151,6 +152,5 @@ state_die = NodePath("../StateDie")
 script = ExtResource("17_xvhhq")
 can_move = false
 
-[connection signal="area_entered" from="." to="StateMashine/StateDie" method="kaktus_entered"]
 [connection signal="tree_entered" from="HighestScore" to="HighestScore" method="_load_score"]
 [connection signal="tree_exiting" from="HighestScore" to="HighestScore" method="_save_score"]

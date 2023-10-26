@@ -11,9 +11,10 @@ func _ready():
 	SignalBus.on_pause_button_preased.connect(pause)
 
 func player_died(ball):
-	pass
+	ball.sound_controler.process_mode = Node.PROCESS_MODE_ALWAYS
 
 func restart():
+	ball.sound_controler.process_mode = Node.PROCESS_MODE_INHERIT
 	get_tree().call_group("kaktuses", "queue_free")
 	get_tree().call_group("clouds", "queue_free")
 	ball.position = $StartPosition.position
