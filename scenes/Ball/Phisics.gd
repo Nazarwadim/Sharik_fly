@@ -1,7 +1,7 @@
 extends Node
 class_name BallPhisics
-var speed:float
-var speed_increase:float
+@onready var speed:float = 0
+@onready var speed_increase:float = 0
 @onready var velocity:Vector2 = Vector2(0,0)
 
 

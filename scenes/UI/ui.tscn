@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgtietayb8gpk"]
+[gd_scene load_steps=24 format=3 uid="uid://bgtietayb8gpk"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
 [ext_resource type="Script" path="res://scenes/UI/Tools/Score.gd" id="2_80xu8"]
@@ -9,13 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://dn1vmuj6ws0no" path="res://assets/svg_icons/pause_button_normal.png" id="5_hpmr6"]
 [ext_resource type="Texture2D" uid="uid://dgmpj681anyh" path="res://assets/svg_icons/pause_button_preased.png" id="6_w2vtm"]
 [ext_resource type="Script" path="res://scenes/UI/control/ButtonDown.gd" id="6_wv5ak"]
+[ext_resource type="Script" path="res://scenes/UI/RestartButton.gd" id="9_xjwd0"]
+[ext_resource type="Texture2D" uid="uid://0d200t6320f6" path="res://assets/svg_icons/restart_button.png" id="10_oam0t"]
+[ext_resource type="Texture2D" uid="uid://cytalqv80lb5j" path="res://assets/svg_icons/restart_button_preased.png" id="11_bmvbg"]
+[ext_resource type="LabelSettings" uid="uid://c17ilplx0wiap" path="res://fonts/new_label_settings.tres" id="11_dndq7"]
+[ext_resource type="Script" path="res://scenes/UI/HomeButton.gd" id="12_d6jv5"]
+[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="12_tuncl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0ygfx"]
 font_size = 29
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Shortcut" id="Shortcut_3mfom"]
 
 [sub_resource type="Gradient" id="Gradient_8hfbq"]
 
@@ -27,6 +31,14 @@ gradient = SubResource("Gradient_8hfbq")
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_v8gb0"]
 gradient = SubResource("Gradient_i4exs")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmhyf"]
+shader = ExtResource("12_tuncl")
+
+[sub_resource type="Theme" id="Theme_chv10"]
+default_font_size = 48
+
+[sub_resource type="Shortcut" id="Shortcut_3mfom"]
+
 [node name="UI" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_u0qht")
@@ -36,6 +48,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_lock_ = true
 
 [node name="Air" type="Control" parent="Tools"]
 anchors_preset = 0
@@ -107,19 +120,6 @@ offset_bottom = 40.0
 text = "3test"
 label_settings = ExtResource("2_bvo4i")
 
-[node name="SettingsButton" type="TextureButton" parent="Tools"]
-layout_mode = 0
-offset_left = 1115.0
-offset_top = 1.0
-offset_right = 1150.0
-offset_bottom = 36.0
-shortcut = SubResource("Shortcut_3mfom")
-texture_normal = ExtResource("5_hpmr6")
-texture_pressed = ExtResource("6_w2vtm")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("4_8jxon")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -137,15 +137,70 @@ script = ExtResource("2_qn8aw")
 
 [node name="ButtonDown" type="TouchScreenButton" parent="Control"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(9.53674e-07, 275)
-scale = Vector2(4.49609, 304)
+position = Vector2(0, 274)
+scale = Vector2(4.5, 304)
 texture_normal = SubResource("GradientTexture1D_v8gb0")
 script = ExtResource("6_wv5ak")
 
+[node name="GUi" type="ColorRect" parent="."]
+process_mode = 3
+visible = false
+material = SubResource("ShaderMaterial_kmhyf")
+offset_right = 1156.0
+offset_bottom = 655.0
+
+[node name="Label" type="Label" parent="GUi"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 383.0
+offset_top = 152.0
+offset_right = 779.0
+offset_bottom = 252.0
+text = "Pause Mode!!!!!!"
+label_settings = ExtResource("11_dndq7")
+
+[node name="RestartButton" type="TextureButton" parent="GUi"]
+layout_mode = 0
+offset_left = 1028.0
+offset_top = 532.0
+offset_right = 1126.0
+offset_bottom = 630.0
+texture_normal = ExtResource("10_oam0t")
+texture_pressed = ExtResource("11_bmvbg")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("9_xjwd0")
+
+[node name="HomeButton" type="Button" parent="GUi"]
+layout_mode = 0
+offset_left = 384.0
+offset_top = 222.0
+offset_right = 768.0
+offset_bottom = 319.0
+theme = SubResource("Theme_chv10")
+text = "Go home"
+script = ExtResource("12_d6jv5")
+
+[node name="PauseButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+offset_left = 1086.0
+offset_top = 12.0
+offset_right = 1121.0
+offset_bottom = 47.0
+toggle_mode = true
+shortcut = SubResource("Shortcut_3mfom")
+texture_normal = ExtResource("5_hpmr6")
+texture_pressed = ExtResource("6_w2vtm")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("4_8jxon")
+
 [connection signal="value_changed" from="Tools/Air/AirBar" to="Tools/Air/AirBar" method="_on_value_changed"]
-[connection signal="button_down" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_down"]
-[connection signal="button_up" from="Tools/SettingsButton" to="Tools/SettingsButton" method="_on_button_up"]
 [connection signal="pressed" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_down"]
 [connection signal="released" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_up"]
 [connection signal="pressed" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
 [connection signal="released" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]
+[connection signal="pressed" from="GUi/HomeButton" to="GUi/HomeButton" method="_on_pressed"]
+[connection signal="toggled" from="PauseButton" to="." method="_on_settings_button_toggled"]
+[connection signal="toggled" from="PauseButton" to="PauseButton" method="_on_toggled"]

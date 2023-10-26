@@ -12,12 +12,19 @@ class_name Ball
 @onready var phisics:BallPhisics = $Phisics
 @onready var sound_controler:BallSoundController = $SoundControler
 @onready var trail:GPUParticles2D = $Trail
+@onready var state_mashine:BallStateMachine = $StateMashine
 
-func _process(delta) -> void:
+
+func _ready():
+	SignalBus.on_restart_button_preased.connect(restart)
+
+func restart():
+	sound_controler.stop_play()
 	
+func _process(delta) -> void:
 	$HighestScore.update_highest_score(position)
 
-	
+
 func _physics_process(delta) -> void:
 	position += phisics.velocity * delta 
 	position.y = clampf(position.y, -1000, 0)

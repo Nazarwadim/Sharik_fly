@@ -1,19 +1,21 @@
 extends TextureButton
 
-
-func _on_button_down():
-	var tween = get_tree().create_tween()
-	
-	tween.tween_property(self, "size", Vector2(50,50), 0.2)
-	tween.tween_property(self, "position", Vector2(1098,1),0.2)
-	
+func _on_toggled(button_pressed:bool):
+	SignalBus.on_pause_button_preased.emit(button_pressed)
+	var tween = get_tree().create_tween()	
+	if button_pressed:
+		tween.tween_property(self, "size", Vector2(75,75), 0.2)
+		tween.tween_property(self, "position", Vector2(1050,12),0.2)
+		
+	else:
+		tween.tween_property(self, "size", Vector2(44,44),0.2)
+		tween.tween_property(self, "position", Vector2(1086,12),0.2)
+		
 	tween.play()
 
-
-func _on_button_up():
-	var tween = get_tree().create_tween()
+func _ready():
+	SignalBus.on_restart_button_preased.connect(_toggle)
 	
-	tween.tween_property(self, "size", Vector2(40,40),0.2)
-	tween.tween_property(self, "position", Vector2(1110,1),0.2)
-	tween.play()
+func _toggle():
+	button_pressed = !button_pressed
 	

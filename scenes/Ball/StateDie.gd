@@ -1,5 +1,6 @@
 extends State
 
+
 func kaktus_entered(area2D) -> void:
 	if area2D is Kaktus:
 		interrupt_state.emit(self)
@@ -15,5 +16,7 @@ func die_anim_finished() -> void:
 	ball.phisics.velocity = Vector2.ZERO
 	ball.phisics.speed = 0
 	SignalBus.player_died.emit(ball)
+
+
 
 

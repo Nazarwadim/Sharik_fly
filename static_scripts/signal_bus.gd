@@ -6,7 +6,9 @@ signal on_score_changed(node:Node, score : float)
 signal on_highest_score_changed(node:Node, score:float)
 
 signal on_start_button_preased()
-signal on_pause_button_preased()
+signal on_pause_button_preased(is_preased:bool)
 signal on_restart_button_preased()
+signal on_startUI_button_preased()
+
 
 signal player_died(ball:Ball)

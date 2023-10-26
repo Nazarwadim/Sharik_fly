@@ -1,6 +1,6 @@
 extends Node
 
-class_name CharacterStateMachine
+class_name BallStateMachine
 
 @export var object : Area2D
 @export var animation : AnimatedSprite2D
@@ -48,3 +48,4 @@ func _input(event : InputEvent):
 	
 func on_state_interrupt_state(new_state:State):
 	switch_states(new_state)
+

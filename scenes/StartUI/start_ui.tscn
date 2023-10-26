@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxh3tys25wmmw"]
+[gd_scene load_steps=12 format=3 uid="uid://cxh3tys25wmmw"]
 
 [ext_resource type="FontFile" uid="uid://cmok75x4xo3v4" path="res://fonts/ISOCPEUR.ttf" id="1_h4l1h"]
+[ext_resource type="Script" path="res://scenes/StartUI/start_ui.gd" id="1_to3tp"]
 [ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="1_ycwd7"]
 [ext_resource type="Script" path="res://scenes/StartUI/StartButton.gd" id="3_tcist"]
+[ext_resource type="LabelSettings" uid="uid://c17ilplx0wiap" path="res://fonts/new_label_settings.tres" id="5_7u212"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6icu7"]
 size = Vector2(1098, 703)
@@ -13,13 +15,6 @@ shader = ExtResource("1_ycwd7")
 [sub_resource type="Theme" id="Theme_5s636"]
 default_font = ExtResource("1_h4l1h")
 default_font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_lnbhg"]
-font = ExtResource("1_h4l1h")
-font_size = 110
-font_color = Color(1, 1, 0.729412, 1)
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fkn5"]
 size = Vector2(658.5, 60)
@@ -33,6 +28,7 @@ gradient = SubResource("Gradient_vqrmm")
 height = 60
 
 [node name="StartUI" type="Node2D"]
+script = ExtResource("1_to3tp")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 gravity_scale = 0.0
@@ -66,7 +62,7 @@ offset_top = 250.0
 offset_right = 960.0
 offset_bottom = 646.0
 text = "Tap to start!!!!"
-label_settings = SubResource("LabelSettings_lnbhg")
+label_settings = ExtResource("5_7u212")
 
 [node name="RigidBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-11, 1443)
