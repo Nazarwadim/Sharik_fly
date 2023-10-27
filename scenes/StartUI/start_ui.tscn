@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxh3tys25wmmw"]
+[gd_scene load_steps=12 format=3 uid="uid://cxh3tys25wmmw"]
 
 [ext_resource type="FontFile" uid="uid://cmok75x4xo3v4" path="res://fonts/ISOCPEUR.ttf" id="1_h4l1h"]
 [ext_resource type="Script" path="res://scenes/StartUI/start_ui.gd" id="1_to3tp"]
 [ext_resource type="Script" path="res://scenes/StartUI/StartButton.gd" id="3_tcist"]
+[ext_resource type="Script" path="res://scenes/UI/ExitButton.gd" id="4_21iul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6icu7"]
 size = Vector2(1098, 703)
@@ -17,6 +18,9 @@ font_size = 66
 font_color = Color(0.698039, 0.588235, 0, 1)
 outline_size = 9
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_j7p2e"]
+default_font_size = 48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fkn5"]
 size = Vector2(658.5, 60)
@@ -58,6 +62,17 @@ offset_bottom = 646.0
 text = "Tap to start!!!!"
 label_settings = SubResource("LabelSettings_g3lto")
 
+[node name="ExitButton" type="Button" parent="RigidBody2D"]
+visible = false
+modulate = Color(1, 0.164706, 0.121569, 1)
+offset_left = -332.0
+offset_top = 146.0
+offset_right = 49.0
+offset_bottom = 221.0
+theme = SubResource("Theme_j7p2e")
+text = "Exit"
+script = ExtResource("4_21iul")
+
 [node name="RigidBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(-11, 1443)
 metadata/_edit_group_ = true
@@ -76,3 +91,4 @@ texture = SubResource("GradientTexture2D_ae8jl")
 [node name="StartButtonPosition" type="Marker2D" parent="."]
 
 [connection signal="gui_input" from="RigidBody2D/StartButton" to="RigidBody2D/StartButton" method="_on_gui_input"]
+[connection signal="pressed" from="RigidBody2D/ExitButton" to="RigidBody2D/ExitButton" method="_on_pressed"]

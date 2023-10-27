@@ -26,3 +26,9 @@ func pause(is_preased:bool):
 	else:
 		process_mode = Node.PROCESS_MODE_INHERIT
 
+
+func _notification(what):
+	if what == NOTIFICATION_WM_GO_BACK_REQUEST and $UI.visible:
+		$UI.setting_button.button_pressed = true
+	elif what == NOTIFICATION_WM_GO_BACK_REQUEST and $StartUI.visible:
+		$StartUI.exit_button.visible = !$StartUI.exit_button.visible

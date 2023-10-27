@@ -1,8 +1,10 @@
 extends CanvasLayer
 class_name UI
 @export var game:Game
+
 @onready var gui:ColorRect = $GUi
 @onready var gui_label:Label = $GUi/Label
+@onready var setting_button:TextureButton = $SettingsButton
 func _ready():
 	SignalBus.on_start_button_preased.connect(start)
 	SignalBus.on_startUI_button_preased.connect(stop)
@@ -26,7 +28,7 @@ func _on_settings_button_toggled(button_pressed:bool):
 	$Control.visible = not button_pressed
 
 func _player_died(ball):
-	$SettingsButton.button_pressed = true
+	setting_button.button_pressed = true
 	gui_label.text = "You died("
 	gui_label.label_settings.font_color.g = 0
 

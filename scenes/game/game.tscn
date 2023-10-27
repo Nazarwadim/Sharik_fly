@@ -26,7 +26,7 @@ game = NodePath("..")
 
 [node name="Ball" parent="." instance=ExtResource("4_xad56")]
 scale = Vector2(0.6, 0.6)
-start_speed_increase = 4.0
+start_speed_increase = 3.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ball"]
 position = Vector2(0, -250)

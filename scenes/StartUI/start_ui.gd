@@ -1,4 +1,6 @@
 extends Node2D
+class_name StartUi
+@onready var exit_button = $RigidBody2D/ExitButton
 
 func _ready():
 	SignalBus.on_startUI_button_preased.connect(_set_rigidbody_button)

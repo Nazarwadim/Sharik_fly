@@ -33,10 +33,10 @@ motion_mirroring = Vector2(2500, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/sky_layer"]
 texture_filter = 1
-offset_left = -10.0
-offset_top = -921.0
-offset_right = 2502.0
-offset_bottom = 232.0
+offset_left = -11.0
+offset_top = -922.0
+offset_right = 2501.0
+offset_bottom = 272.0
 rotation = -0.0161228
 texture = ExtResource("12_hfnh4")
 
@@ -47,9 +47,9 @@ motion_mirroring = Vector2(2500, 0)
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/mountain_layer"]
 texture_filter = 1
 offset_left = -24.0
-offset_top = 160.0
+offset_top = 220.0
 offset_right = 2476.0
-offset_bottom = 448.0
+offset_bottom = 515.0
 texture = ExtResource("8_nsjuu")
 
 [node name="ball_layer" type="ParallaxLayer" parent="ParallaxBackground"]
