@@ -2,11 +2,16 @@ extends Node2D
 @export var wind_scene:PackedScene
 
 @export var wind_generation_area:Rect2 = Rect2(Vector2(-800,-600), Vector2(1100, 600))
-
+@export var probability_of_skipping_generation_percentage:float = 33
 
 func generate_wind(ball:Ball):
-	if randi_range(0,3) == 3:
+	if probability_of_skipping_generation_percentage < 0 or probability_of_skipping_generation_percentage > 100:
+		printerr("Too large or small probability_of_skipping_generation Kaktuses.gd 10")
+		
+	var skip_generation_number = randf_range(0,100)
+	if skip_generation_number < probability_of_skipping_generation_percentage:
 		return
+	
 	for i in range(0, randi_range(1,2)):
 		var setup_x = randf_range( 0, wind_generation_area.size.x )
 		var setup_y = randf_range( 0, wind_generation_area.size.y )
