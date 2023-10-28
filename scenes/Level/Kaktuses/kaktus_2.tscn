@@ -28,5 +28,5 @@ sprite_frames = SubResource("SpriteFrames_kah3l")
 frame_progress = 0.745422
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
-position = Vector2(-47, -53)
-scale = Vector2(9.6, 10.4)
+position = Vector2(-49, -53)
+scale = Vector2(9.8, 10.4)

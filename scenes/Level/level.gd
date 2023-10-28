@@ -11,7 +11,7 @@ func _ready():
 	SignalBus.player_died.connect(stop_generation)
 	
 	
-func stop_generation(balL):
+func stop_generation(_balL):
 	$Kaktuses_generator/Timer.stop()
 	$Cloud_Paralax/Timer.stop()
 	

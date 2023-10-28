@@ -21,7 +21,7 @@ func _ready():
 func restart():
 	sound_controler.stop_play()
 	
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	$HighestScore.update_highest_score(position)
 
 

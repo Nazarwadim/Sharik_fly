@@ -27,7 +27,7 @@ func _on_settings_button_toggled(button_pressed:bool):
 	gui.visible = button_pressed
 	$Control.visible = not button_pressed
 
-func _player_died(ball):
+func _player_died(_ball):
 	setting_button.button_pressed = true
 	gui_label.text = "You died("
 	gui_label.label_settings.font_color.g = 0

@@ -21,12 +21,14 @@ animations = [{
 [node name="Kaktus1" instance=ExtResource("1_h4xox")]
 
 [node name="CollisionPolygon2D" parent="." index="0"]
+position = Vector2(8, 0)
 polygon = PackedVector2Array(5, -25, -20, -25, -11, 3, -11, 3, -31, -8, -31, 6, -12, 17, -8, 42, -16, 50, 14, 50, 8, 42)
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_may27")
-frame_progress = 0.495529
+frame_progress = 0.20269
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="2"]
-position = Vector2(-30, -26)
+position = Vector2(-23, -26)
 scale = Vector2(4.7, 7.7)

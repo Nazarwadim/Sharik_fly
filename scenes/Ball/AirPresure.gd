@@ -4,7 +4,7 @@ var value:float = 1
 
 var block_airpresure_up:bool = false
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if value <= 0:
 		block_airpresure_up = true
 	if value > 50:

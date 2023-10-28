@@ -1,21 +1,39 @@
 extends Node2D
 class_name Kaktus_generaor
 @export var kaktuses:Array
-var kaktus_width:float
 
+var _generation_x_position:float
+@export var probability_of_skipping_generation_percentage:float = 33
+@export var max_generated_kaktuses:int = 4
 func generate_kaktus(player:Ball) -> void:
-	var first = randi_range(0,2)
-	if first == 2:
+	if probability_of_skipping_generation_percentage < 0 or probability_of_skipping_generation_percentage > 100:
+		printerr("Too large or small probability_of_skipping_generation Kaktuses.gd 10")
+		
+	var skip_generation_number = randf_range(0,100)
+	if skip_generation_number < probability_of_skipping_generation_percentage:
 		return
-	for i in range(0,randi_range(1,4)):
-		await  get_tree().create_timer((kaktus_width + 2)/player.phisics.speed).timeout
-		_add_kaktuse( randi_range(0,kaktuses.size() - 1), randf_range(-10,10) , player)
+		
+	for i in range(0,randi_range(1, max_generated_kaktuses)):
+		var kaktus = _create_kaktuse( randi_range(0,kaktuses.size() - 1), randf_range(-8,8) , player)
+		add_child(kaktus)
+	_generation_x_position = 0
+	_width_of_past_kactus = 0
 	
 	
-func _add_kaktuse(generated_index:int, generated_position_y:float,player:Area2D) -> void:
+var _width_of_past_kactus:float = 0
+func _create_kaktuse(generated_index:int, generated_position_y:float,player:Area2D) -> Kaktus:
 	var kaktus:Area2D = kaktuses[generated_index].instantiate()
-	kaktus_width = kaktus.get_node("VisibleOnScreenNotifier2D").scale.x * 10 
-	kaktus.position.x = player.position.x + 1000
+	var kaktus_width = kaktus.get_node("VisibleOnScreenNotifier2D").scale.x * kaktus.get_node("VisibleOnScreenNotifier2D").rect.size.x 
+	var spacing:float
+	if _width_of_past_kactus != 0:
+		spacing = (_width_of_past_kactus + kaktus_width)/2
+	else:
+		spacing = 0
+	
+	_generation_x_position += spacing
+	kaktus.position.x = player.position.x + _generation_x_position + 1000
 	kaktus.position.y = generated_position_y
-	add_child(kaktus)
+	_width_of_past_kactus = kaktus_width
+	
+	return kaktus
 

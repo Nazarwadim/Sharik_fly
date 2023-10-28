@@ -29,7 +29,7 @@ func _ready():
 func _physics_process(delta) -> void:
 	move_path(delta)
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	if use_gradient:
 		update_path_gradient()
 		
