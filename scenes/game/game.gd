@@ -25,7 +25,7 @@ func pause(is_preased:bool):
 		process_mode = Node.PROCESS_MODE_DISABLED
 	else:
 		process_mode = Node.PROCESS_MODE_INHERIT
-
+	
 
 func _notification(what):
 	if what == NOTIFICATION_WM_GO_BACK_REQUEST and $UI.visible:

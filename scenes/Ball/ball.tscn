@@ -112,11 +112,9 @@ mix_target = 2
 
 [node name="UpSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("10_nf1lp")
-volume_db = -3.0
 
 [node name="DownSound" type="AudioStreamPlayer" parent="SoundControler"]
 stream = ExtResource("11_c7w1i")
-volume_db = -3.0
 
 [node name="StateMashine" type="Node" parent="." node_paths=PackedStringArray("object", "animation", "current_state")]
 script = ExtResource("12_ndfgc")

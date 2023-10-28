@@ -11,7 +11,7 @@ script = ExtResource("1_3pdiy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -150)
-scale = Vector2(1, 1)
+scale = Vector2(0.6, 0.6)
 
 [node name="Level" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_6hhgd")]
 player = NodePath("../Ball")
@@ -30,7 +30,6 @@ start_speed_increase = 3.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Ball"]
 position = Vector2(0, -250)
-scale = Vector2(1.66667, 1.66667)
 remote_path = NodePath("../../Camera2D")
 
 [node name="StartUI" parent="." instance=ExtResource("5_bey8h")]

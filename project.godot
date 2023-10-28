@@ -14,23 +14,21 @@ config/name="Sharic_run"
 run/main_scene="res://scenes/game/game.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.1", "GL Compatibility")
-config/icon="res://assets/Kaktus_1_1.png"
+boot_splash/image="res://assets/sky.png"
+config/icon="res://icon.png"
 
 [autoload]
 
 SignalBus="*res://static_scripts/signal_bus.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=4
 window/size/initial_position_type=0
 window/size/always_on_top=true
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 

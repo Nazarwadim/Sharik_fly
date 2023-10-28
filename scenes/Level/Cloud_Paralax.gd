@@ -11,7 +11,7 @@ func generate_cloud(player:Area2D) -> void:
 func _add_cloud(generated_index:int, generated_hight:int, generated_layer_index , player:Area2D) -> void:
 	var cloud = clouds[generated_index].instantiate()
 	var scale_x = get_node("clouds_layer" + str(generated_layer_index)).get("motion_scale").x;
-	cloud.position = Vector2(1300 + player.position.x * scale_x, generated_hight * scale_x)
+	cloud.position = Vector2(1500 + player.position.x * scale_x, generated_hight * scale_x)
 	get_node("clouds_layer" + str(generated_layer_index)).add_child(cloud)
 	
 	

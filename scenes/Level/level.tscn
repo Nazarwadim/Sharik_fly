@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dpw5vnjly6pjb"]
+[gd_scene load_steps=18 format=3 uid="uid://dpw5vnjly6pjb"]
 
 [ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_0xpgu"]
 [ext_resource type="Script" path="res://scenes/Level/Kaktuses/Kaktuses.gd" id="2_ugwwj"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://beyxi3s2hsl85" path="res://scenes/Level/Kaktuses/kaktus_2.tscn" id="4_aife5"]
 [ext_resource type="PackedScene" uid="uid://bd1xhrmtfjuau" path="res://scenes/Level/Kaktuses/kaktus_3.tscn" id="5_w8wx1"]
 [ext_resource type="Script" path="res://scenes/Level/Cloud_Paralax.gd" id="6_0y378"]
+[ext_resource type="Script" path="res://scenes/Level/Wind/Wind_generator.gd" id="6_buw6q"]
+[ext_resource type="PackedScene" uid="uid://qfhcwt7bp6gv" path="res://scenes/Level/Wind/WindGust.tscn" id="7_k4bob"]
 [ext_resource type="Texture2D" uid="uid://b5h35ns4qpstp" path="res://assets/chmara_1.png" id="7_stkdb"]
 [ext_resource type="Texture2D" uid="uid://cx3q8q0q5mbci" path="res://assets/mountains.png" id="8_nsjuu"]
 [ext_resource type="PackedScene" uid="uid://cfko0rodfgt3a" path="res://scenes/Level/Clouds/cloud_1.tscn" id="10_h6uvp"]
@@ -24,6 +26,14 @@ script = ExtResource("2_ugwwj")
 kaktuses = [ExtResource("3_pv55c"), ExtResource("4_aife5"), ExtResource("5_w8wx1")]
 
 [node name="Timer" type="Timer" parent="Kaktuses_generator"]
+
+[node name="Wind_generator" type="Node2D" parent="."]
+script = ExtResource("6_buw6q")
+wind_scene = ExtResource("7_k4bob")
+wind_generation_area = Rect2(-650, -600, 1000, 550)
+
+[node name="Timer" type="Timer" parent="Wind_generator"]
+autostart = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -82,4 +92,5 @@ motion_scale = Vector2(0.4, 0.4)
 [node name="Timer" type="Timer" parent="Cloud_Paralax"]
 
 [connection signal="timeout" from="Kaktuses_generator/Timer" to="." method="on_generate_timer_timeout"]
+[connection signal="timeout" from="Wind_generator/Timer" to="." method="_on_generate_wind_timer_timeout"]
 [connection signal="timeout" from="Cloud_Paralax/Timer" to="." method="_on_cloud_timer_timeout"]
