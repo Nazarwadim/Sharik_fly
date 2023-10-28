@@ -14,7 +14,9 @@ config/name="Sharic_run"
 run/main_scene="res://scenes/game/game.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.1", "GL Compatibility")
+boot_splash/bg_color=Color(0.898039, 0.870588, 0.992157, 1)
 boot_splash/image="res://assets/sky.png"
+boot_splash/use_filter=false
 config/icon="res://icon.png"
 
 [autoload]
@@ -25,6 +27,7 @@ SignalBus="*res://static_scripts/signal_bus.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=4
 window/size/initial_position_type=0
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
@@ -61,6 +64,5 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
