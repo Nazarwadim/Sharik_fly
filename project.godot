@@ -15,7 +15,7 @@ run/main_scene="res://scenes/game/game.tscn"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.1", "GL Compatibility")
 boot_splash/bg_color=Color(0.898039, 0.870588, 0.992157, 1)
-boot_splash/image="res://assets/sky.png"
+boot_splash/image="res://assets/sand.png"
 boot_splash/use_filter=false
 config/icon="res://icon.png"
 

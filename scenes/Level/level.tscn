@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpw5vnjly6pjb"]
+[gd_scene load_steps=17 format=3 uid="uid://dpw5vnjly6pjb"]
 
 [ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_0xpgu"]
 [ext_resource type="Script" path="res://scenes/Level/Kaktuses/Kaktuses.gd" id="2_ugwwj"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scenes/Level/Cloud_Paralax.gd" id="6_0y378"]
 [ext_resource type="Script" path="res://scenes/Level/Wind/Wind_generator.gd" id="6_buw6q"]
 [ext_resource type="PackedScene" uid="uid://qfhcwt7bp6gv" path="res://scenes/Level/Wind/WindGust.tscn" id="7_k4bob"]
-[ext_resource type="Texture2D" uid="uid://b5h35ns4qpstp" path="res://assets/chmara_1.png" id="7_stkdb"]
 [ext_resource type="Texture2D" uid="uid://cx3q8q0q5mbci" path="res://assets/mountains.png" id="8_nsjuu"]
 [ext_resource type="PackedScene" uid="uid://cfko0rodfgt3a" path="res://scenes/Level/Clouds/cloud_1.tscn" id="10_h6uvp"]
 [ext_resource type="PackedScene" uid="uid://btqkt1pt1kevo" path="res://scenes/Level/Clouds/cloud_2.tscn" id="11_82ovt"]
@@ -78,10 +77,6 @@ clouds = [ExtResource("10_h6uvp"), ExtResource("11_82ovt"), ExtResource("12_hr0c
 
 [node name="clouds_layer0" type="ParallaxLayer" parent="Cloud_Paralax"]
 motion_scale = Vector2(0.1, 0.1)
-
-[node name="Sprite2D" type="Sprite2D" parent="Cloud_Paralax/clouds_layer0"]
-position = Vector2(1000, 0)
-texture = ExtResource("7_stkdb")
 
 [node name="clouds_layer1" type="ParallaxLayer" parent="Cloud_Paralax"]
 motion_scale = Vector2(0.2, 0.2)

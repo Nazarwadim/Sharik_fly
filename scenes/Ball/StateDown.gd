@@ -23,4 +23,4 @@ func _input_():
 func _play_sound():
 	var length = ball.sound_controler.get_sound_length("DownSound")
 	var pitch_scale:float =abs( length / (100 / ball.air_presure_restoration_while_down) )
-	ball.sound_controler.play_sound("DownSound",pitch_scale, abs( length * ball.air_presure.value/100 - 0.1 ))
+	ball.sound_controler.play_sound("DownSound",pitch_scale, abs( length * ball.air_presure.value/100 - 0.01 ))

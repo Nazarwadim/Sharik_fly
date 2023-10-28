@@ -1,7 +1,7 @@
 extends Node2D
 @export var wind_scene:PackedScene
 
-@export var wind_generation_area:Rect2 = Rect2(Vector2(-800,-600), Vector2(1100, 600))
+@export var wind_generation_area:Rect2 = Rect2(Vector2(-800,-550), Vector2(1100, 600))
 @export var probability_of_skipping_generation_percentage:float = 33
 
 func generate_wind(ball:Ball):
@@ -16,7 +16,7 @@ func generate_wind(ball:Ball):
 		var setup_x = randf_range( 0, wind_generation_area.size.x )
 		var setup_y = randf_range( 0, wind_generation_area.size.y )
 		var wind_setup_position = Vector2(setup_x + wind_generation_area.position.x,setup_y + wind_generation_area.position.y)
-		var wind_trail_speed = randf_range(0.4, 0.5001 + ball.phisics.speed/1000.0)
+		var wind_trail_speed = randf_range(0.5, 0.6 + ball.phisics.speed/1000.0)
 		var wind_trail_length = randf_range(0.5, 1)
 		var wind = _create_wind(ball.position, wind_setup_position, wind_trail_speed, wind_trail_length)
 		add_child(wind)
