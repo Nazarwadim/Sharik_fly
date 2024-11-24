@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://keaoufixlq78"]
+
+[ext_resource type="Script" path="res://scenes/game/loading.gd" id="1_31myy"]
+[ext_resource type="Texture2D" uid="uid://b5h35ns4qpstp" path="res://assets/chmara_1.png" id="1_qtnfl"]
+[ext_resource type="Script" path="res://scenes/game/progress.gd" id="1_s1t3o"]
+[ext_resource type="PackedScene" uid="uid://cayr50ihu8f2n" path="res://scenes/dynamic_asset_load/dynamic_image_loader.tscn" id="4_b81ap"]
+
+[node name="Loading" type="Node"]
+script = ExtResource("1_31myy")
+images_to_load = PackedStringArray("mountains.png", "sand.png", "sky.png")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Progress" type="Node2D" parent="."]
+position = Vector2(134, 602)
+script = ExtResource("1_s1t3o")
+metadata/_edit_group_ = true
+
+[node name="Chmara1" type="Sprite2D" parent="Progress"]
+texture_filter = 1
+texture = ExtResource("1_qtnfl")
+
+[node name="Marker2D" type="Marker2D" parent="Progress"]
+position = Vector2(1000, 0)
+
+[node name="DynamicImageLoader" parent="." instance=ExtResource("4_b81ap")]

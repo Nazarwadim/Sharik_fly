@@ -104,5 +104,3 @@ func init_path_followers():
 
 	for g_cnt in range(line_segments):
 		gradient.add_point(float(g_cnt+1)/float(line_segments), Color(1.0,1.0,1.0,1.0))
-
-

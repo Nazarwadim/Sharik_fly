@@ -28,5 +28,3 @@ func _process(_delta) -> void:
 func _physics_process(delta) -> void:
 	position += phisics.velocity * delta 
 	position.y = clampf(position.y, -1000, 0)
-
-

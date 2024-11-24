@@ -48,4 +48,3 @@ func _input(event : InputEvent):
 	
 func on_state_interrupt_state(new_state:State):
 	switch_states(new_state)
-

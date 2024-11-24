@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dpw5vnjly6pjb"]
+[gd_scene load_steps=20 format=3 uid="uid://dpw5vnjly6pjb"]
 
 [ext_resource type="Script" path="res://scenes/Level/level.gd" id="1_0xpgu"]
+[ext_resource type="PackedScene" uid="uid://cayr50ihu8f2n" path="res://scenes/dynamic_asset_load/dynamic_image_loader.tscn" id="2_hvjbx"]
 [ext_resource type="Script" path="res://scenes/Level/Kaktuses/Kaktuses.gd" id="2_ugwwj"]
 [ext_resource type="PackedScene" uid="uid://c5pf3krco12oe" path="res://scenes/Level/Kaktuses/kaktus_1.tscn" id="3_pv55c"]
 [ext_resource type="PackedScene" uid="uid://beyxi3s2hsl85" path="res://scenes/Level/Kaktuses/kaktus_2.tscn" id="4_aife5"]
@@ -8,6 +9,7 @@
 [ext_resource type="Script" path="res://scenes/Level/Cloud_Paralax.gd" id="6_0y378"]
 [ext_resource type="Script" path="res://scenes/Level/Wind/Wind_generator.gd" id="6_buw6q"]
 [ext_resource type="PackedScene" uid="uid://qfhcwt7bp6gv" path="res://scenes/Level/Wind/WindGust.tscn" id="7_k4bob"]
+[ext_resource type="Shader" path="res://scenes/Level/shaders/level.gdshader" id="8_434st"]
 [ext_resource type="Texture2D" uid="uid://cx3q8q0q5mbci" path="res://assets/mountains.png" id="8_nsjuu"]
 [ext_resource type="PackedScene" uid="uid://cfko0rodfgt3a" path="res://scenes/Level/Clouds/cloud_1.tscn" id="10_h6uvp"]
 [ext_resource type="PackedScene" uid="uid://btqkt1pt1kevo" path="res://scenes/Level/Clouds/cloud_2.tscn" id="11_82ovt"]
@@ -17,8 +19,14 @@
 [ext_resource type="PackedScene" uid="uid://dj0guyfaajwvg" path="res://scenes/Level/Clouds/cloud_4.tscn" id="13_p151j"]
 [ext_resource type="PackedScene" uid="uid://djmpa1njvw51p" path="res://scenes/Level/Clouds/cloud_5.tscn" id="14_d6nej"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fqxao"]
+shader = ExtResource("8_434st")
+shader_parameter/radius = 4.0
+
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0xpgu")
+
+[node name="DynamicImageLoader" parent="." instance=ExtResource("2_hvjbx")]
 
 [node name="Kaktuses_generator" type="Node2D" parent="."]
 script = ExtResource("2_ugwwj")
@@ -38,15 +46,15 @@ autostart = true
 
 [node name="sky_layer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.7, 0.7)
-motion_mirroring = Vector2(2500, 0)
+motion_mirroring = Vector2(5000, 0)
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/sky_layer"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_fqxao")
 offset_left = -11.0
 offset_top = -922.0
-offset_right = 2501.0
+offset_right = 4989.0
 offset_bottom = 272.0
-rotation = -0.0161228
 texture = ExtResource("12_hfnh4")
 
 [node name="mountain_layer" type="ParallaxLayer" parent="ParallaxBackground"]
