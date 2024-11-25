@@ -36,4 +36,3 @@ func _create_kaktuse(generated_index:int, generated_position_y:float,player:Area
 	_width_of_past_kactus = kaktus_width
 	
 	return kaktus
-

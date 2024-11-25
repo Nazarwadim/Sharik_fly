@@ -1,8 +1,9 @@
 extends State
 
+@export var can_die:bool = true
 
 func kaktus_entered(area2D) -> void:
-	if area2D is Kaktus:
+	if area2D is Kaktus and can_die:
 		ball.area_entered.disconnect(kaktus_entered)
 		interrupt_state.emit(self)
 
@@ -18,5 +19,3 @@ func _die_anim_finished() -> void:
 	ball.phisics.speed = 0
 	SignalBus.player_died.emit(ball)
 	animation.animation_looped.disconnect(_die_anim_finished)
-
-

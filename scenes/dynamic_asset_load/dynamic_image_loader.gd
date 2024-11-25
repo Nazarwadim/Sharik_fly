@@ -15,6 +15,7 @@ func load_image(image_name:String) -> Image:
 	return image
 
 func get_image_from_server(remote_name:String) -> Image:
+	print(OS.get_user_data_dir())
 	if not DirAccess.dir_exists_absolute(ASSETS_FOLDER):
 		DirAccess.make_dir_absolute(ASSETS_FOLDER)
 
