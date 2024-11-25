@@ -20,11 +20,10 @@ func _ready():
 
 func restart():
 	sound_controler.stop_play()
-	
-func _process(_delta) -> void:
-	$HighestScore.update_highest_score(position)
 
 
 func _physics_process(delta) -> void:
 	position += phisics.velocity * delta 
 	position.y = clampf(position.y, -1000, 0)
+	
+	$HighestScore.update_highest_score(position)

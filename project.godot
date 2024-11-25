@@ -28,7 +28,6 @@ Globals="*res://static_scripts/globals.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/size/mode=4
 window/size/initial_position_type=0
 window/size/always_on_top=true
 window/stretch/mode="canvas_items"
@@ -66,6 +65,11 @@ esc={
 [input_devices]
 
 pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+common/physics_ticks_per_second=30
+common/physics_interpolation=true
 
 [rendering]
 

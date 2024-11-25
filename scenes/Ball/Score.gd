@@ -39,6 +39,6 @@ func load_score():
 		
 		ball.high_score = node_data["high_score"]
 
-func _process(delta) -> void:
+func _physics_process(delta: float) -> void:
 	if ball.high_score < ball.position.x:
 		ball.high_score = ball.position.x

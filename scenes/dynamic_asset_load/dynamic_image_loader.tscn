@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://cayr50ihu8f2n"]
 
 [ext_resource type="Script" path="res://scenes/dynamic_asset_load/dynamic_image_loader.gd" id="1_ulii1"]
-[ext_resource type="Script" path="res://addons/awaitable_http_request/awaitable_http_request.gd" id="2_fydv7"]
+[ext_resource type="Script" uid="uid://7dbftfp26hbp" path="res://addons/awaitable_http_request/awaitable_http_request.gd" id="2_fydv7"]
 
 [node name="DynamicImageLoader" type="Node"]
 script = ExtResource("1_ulii1")
 
 [node name="AwaitableHTTPRequest" type="HTTPRequest" parent="."]
+timeout = 1.0
 script = ExtResource("2_fydv7")

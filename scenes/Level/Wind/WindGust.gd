@@ -10,6 +10,8 @@ var use_gradient:bool
 @export var trail_color_gradient : Gradient
 @export var random_y_offset = 15
 
+signal init_finished
+
 func set_wind_path_position(value:Vector2) -> void:
 	$Path2D.position = value
 
@@ -21,10 +23,18 @@ func _ready():
 	
 	if random_y_offset > 0.0:
 		randomize_path()
-	
-	init_path_followers()
+	process_mode = Node.PROCESS_MODE_DISABLED
+	WorkerThreadPool.add_task(init_path_followers, true) 
+	await init_finished
+		
+	var path2d = $Path2D
+	for trail in pf_dict:
+		path2d.add_child(trail)
+		
+	process_mode = Node.PROCESS_MODE_INHERIT
 	if trail_color_gradient	!= null:
 		use_gradient = true
+	
 
 func _physics_process(delta) -> void:
 	move_path(delta)
@@ -32,7 +42,6 @@ func _physics_process(delta) -> void:
 func _process(_delta) -> void:
 	if use_gradient:
 		update_path_gradient()
-		
 	draw_path()
 	
 
@@ -70,11 +79,12 @@ func move_path(delta):
 		queue_free()
 
 func update_path_gradient():
-		
-		for pcnt in range(line_segments+1):
-			gradient.colors[pcnt] = trail_color_gradient.sample(gradient.offsets[pcnt])
-			gradient.colors[pcnt].a *= trail_color_gradient.sample(pf_dict[pcnt].progress_ratio).a
-		
+	var colors: PackedColorArray = gradient.get_colors()
+	var offsets :PackedFloat32Array = gradient.get_offsets()
+	for pcnt in range(line_segments+1):
+		colors[pcnt] = trail_color_gradient.sample(offsets[pcnt])
+		colors[pcnt].a *= trail_color_gradient.sample(pf_dict[pcnt].progress_ratio).a
+	gradient.colors = colors
 
 func randomize_path():
 	for i in range($Path2D.curve.point_count):
@@ -91,16 +101,18 @@ func draw_path():
 
 
 func init_path_followers():
-	
 	for pf_cnt in range(line_segments+1):
 		var new_pf = TrailFollow2D.new()
-		$Path2D.add_child(new_pf)
 		new_pf.trail_offset = float(pf_cnt)/float(line_segments)*trail_length - trail_length
 		new_pf.loop = false		
 		pf_dict.append(new_pf)
 	
-	gradient = Gradient.new()
-	gradient.remove_point(0)
+	
+	var g = Gradient.new()
+	g.remove_point(0)
 
 	for g_cnt in range(line_segments):
-		gradient.add_point(float(g_cnt+1)/float(line_segments), Color(1.0,1.0,1.0,1.0))
+		g.add_point(float(g_cnt+1)/float(line_segments), Color(1.0,1.0,1.0,1.0))
+	
+	set_gradient.call_deferred(g)
+	init_finished.emit.call_deferred()

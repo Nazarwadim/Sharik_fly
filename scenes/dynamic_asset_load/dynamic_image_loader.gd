@@ -1,9 +1,9 @@
 extends Node
 
-const SERVER_URL = "http://192.168.0.108:8000" 
-const ASSETS_FOLDER = "user://assets/"
-
 @onready var http_request: AwaitableHTTPRequest = $AwaitableHTTPRequest
+
+const SERVER_URL = Globals.SERVER_URL 
+const ASSETS_FOLDER = Globals.ASSETS_FOLDER
 
 func load_image(image_name:String) -> Image:
 	var image := await get_image_from_server(image_name)
@@ -15,7 +15,6 @@ func load_image(image_name:String) -> Image:
 	return image
 
 func get_image_from_server(remote_name:String) -> Image:
-	print(OS.get_user_data_dir())
 	if not DirAccess.dir_exists_absolute(ASSETS_FOLDER):
 		DirAccess.make_dir_absolute(ASSETS_FOLDER)
 
