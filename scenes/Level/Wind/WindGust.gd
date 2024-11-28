@@ -5,7 +5,7 @@ var pf_dict = []
 var use_gradient:bool
 @export var reverse_direction = false
 @export var line_segments = 100
-@export var trail_length = 0.6 # (float,0.0,1.0)
+@export_range(0, 1.0) var trail_length = 0.6
 @export var trail_speed = 0.5
 @export var trail_color_gradient : Gradient
 @export var random_y_offset = 15
@@ -19,14 +19,11 @@ func set_wind_path_position(value:Vector2) -> void:
 func _ready():
 	if reverse_direction:	
 		flip_path()
-		
-	
 	if random_y_offset > 0.0:
 		randomize_path()
 	process_mode = Node.PROCESS_MODE_DISABLED
 	WorkerThreadPool.add_task(init_path_followers, true) 
 	await init_finished
-		
 	var path2d = $Path2D
 	for trail in pf_dict:
 		path2d.add_child(trail)
@@ -34,7 +31,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_INHERIT
 	if trail_color_gradient	!= null:
 		use_gradient = true
-	
+
 
 func _physics_process(delta) -> void:
 	move_path(delta)

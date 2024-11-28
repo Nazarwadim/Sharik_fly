@@ -1,45 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://bgtietayb8gpk"]
+[gd_scene load_steps=9 format=3 uid="uid://bgtietayb8gpk"]
 
 [ext_resource type="Script" path="res://scenes/UI/ui.gd" id="1_u0qht"]
-[ext_resource type="Script" path="res://scenes/UI/Tools/Score.gd" id="2_80xu8"]
-[ext_resource type="LabelSettings" uid="uid://b63h4jabqxvhq" path="res://fonts/label_settings_for_score.tres" id="2_bvo4i"]
-[ext_resource type="Script" path="res://scenes/UI/Tools/AirBar.gd" id="2_qmmkx"]
-[ext_resource type="Script" path="res://scenes/UI/control/ButtonUp.gd" id="2_qn8aw"]
+[ext_resource type="PackedScene" uid="uid://cbi0nnfda84d0" path="res://scenes/UI/Tools/tools.tscn" id="2_v774q"]
 [ext_resource type="Script" path="res://scenes/UI/Tools/SettingsButton.gd" id="4_8jxon"]
 [ext_resource type="Texture2D" uid="uid://dn1vmuj6ws0no" path="res://assets/svg_icons/pause_button_normal.png" id="5_hpmr6"]
+[ext_resource type="PackedScene" uid="uid://jqljaceep778" path="res://scenes/UI/control/control.tscn" id="5_wwu3m"]
+[ext_resource type="PackedScene" uid="uid://b3y8q4rgg5iyd" path="res://scenes/UI/gui.tscn" id="6_myyp2"]
 [ext_resource type="Texture2D" uid="uid://dgmpj681anyh" path="res://assets/svg_icons/pause_button_preased.png" id="6_w2vtm"]
-[ext_resource type="Script" path="res://scenes/UI/control/ButtonDown.gd" id="6_wv5ak"]
-[ext_resource type="Script" path="res://scenes/UI/RestartButton.gd" id="9_xjwd0"]
-[ext_resource type="Texture2D" uid="uid://0d200t6320f6" path="res://assets/svg_icons/restart_button.png" id="10_oam0t"]
-[ext_resource type="Texture2D" uid="uid://cytalqv80lb5j" path="res://assets/svg_icons/restart_button_preased.png" id="11_bmvbg"]
-[ext_resource type="LabelSettings" uid="uid://c17ilplx0wiap" path="res://fonts/new_label_settings.tres" id="11_dndq7"]
-[ext_resource type="Script" path="res://scenes/UI/HomeButton.gd" id="12_d6jv5"]
-[ext_resource type="Shader" path="res://shaders/vignette.gdshader" id="12_tuncl"]
-[ext_resource type="Script" path="res://scenes/UI/ExitButton.gd" id="13_awx7v"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_0ygfx"]
-font_size = 29
-outline_size = 3
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_8hfbq"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjqd1"]
-gradient = SubResource("Gradient_8hfbq")
-
-[sub_resource type="Gradient" id="Gradient_i4exs"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8gb0"]
-gradient = SubResource("Gradient_i4exs")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kmhyf"]
-shader = ExtResource("12_tuncl")
-
-[sub_resource type="Theme" id="Theme_chv10"]
-default_font_size = 48
-
-[sub_resource type="Theme" id="Theme_enj48"]
-default_font_size = 48
 
 [sub_resource type="Shortcut" id="Shortcut_3mfom"]
 
@@ -47,160 +14,13 @@ default_font_size = 48
 process_mode = 3
 script = ExtResource("1_u0qht")
 
-[node name="Tools" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_lock_ = true
+[node name="Tools" parent="." instance=ExtResource("2_v774q")]
 
-[node name="Air" type="Control" parent="Tools"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Control" parent="." instance=ExtResource("5_wwu3m")]
+mouse_filter = 2
 
-[node name="AirBar" type="ProgressBar" parent="Tools/Air"]
-modulate = Color(0.372549, 0.0470588, 1, 1)
-layout_mode = 0
-offset_left = 282.0
-offset_top = 647.0
-offset_right = 488.0
-offset_bottom = 687.0
-scale = Vector2(1.497, 1.5)
-value = 20.0
-rounded = true
-show_percentage = false
-script = ExtResource("2_qmmkx")
-
-[node name="Label" type="Label" parent="Tools/Air"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 645.0
-offset_right = 184.0
-offset_bottom = 688.0
-scale = Vector2(1.5, 1.5)
-text = "air presure:"
-label_settings = SubResource("LabelSettings_0ygfx")
-
-[node name="Score" type="Control" parent="Tools"]
-layout_mode = 1
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_80xu8")
-
-[node name="current" type="Label" parent="Tools/Score"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 80.0
-offset_right = 347.0
-offset_bottom = 123.0
-scale = Vector2(1.2, 1.2)
-text = "current:"
-label_settings = SubResource("LabelSettings_0ygfx")
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Tools/Score/current"]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 9.0
-offset_right = 334.0
-offset_bottom = 47.0
-text = "14test"
-label_settings = ExtResource("2_bvo4i")
-
-[node name="record" type="Label" parent="Tools/Score"]
-layout_mode = 0
-offset_left = 20.0
-offset_top = 13.0
-offset_right = 343.0
-offset_bottom = 56.0
-scale = Vector2(1.2, 1.2)
-text = "record:"
-label_settings = SubResource("LabelSettings_0ygfx")
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="Tools/Score/record"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 6.0
-offset_right = 325.0
-offset_bottom = 40.0
-text = "3test"
-label_settings = ExtResource("2_bvo4i")
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1279.0
-offset_bottom = 720.0
-metadata/_edit_lock_ = true
-
-[node name="ButtonUp" type="TouchScreenButton" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(0, 1)
-scale = Vector2(5.01172, 369)
-texture_normal = SubResource("GradientTexture1D_tjqd1")
-script = ExtResource("2_qn8aw")
-metadata/_edit_lock_ = true
-
-[node name="ButtonDown" type="TouchScreenButton" parent="Control"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(0, 372)
-scale = Vector2(5.01562, 348)
-texture_normal = SubResource("GradientTexture1D_v8gb0")
-script = ExtResource("6_wv5ak")
-metadata/_edit_lock_ = true
-
-[node name="GUi" type="ColorRect" parent="."]
+[node name="GUi" parent="." instance=ExtResource("6_myyp2")]
 visible = false
-material = SubResource("ShaderMaterial_kmhyf")
-offset_right = 1284.0
-offset_bottom = 723.0
-
-[node name="Label" type="Label" parent="GUi"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 439.0
-offset_top = 230.0
-offset_right = 859.0
-offset_bottom = 330.0
-text = "Game Paused!!!!!!"
-label_settings = ExtResource("11_dndq7")
-
-[node name="RestartButton" type="TextureButton" parent="GUi"]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1158.0
-offset_top = 592.0
-offset_right = 1256.0
-offset_bottom = 690.0
-texture_normal = ExtResource("10_oam0t")
-texture_pressed = ExtResource("11_bmvbg")
-ignore_texture_size = true
-stretch_mode = 0
-script = ExtResource("9_xjwd0")
-
-[node name="HomeButton" type="Button" parent="GUi"]
-layout_mode = 0
-offset_left = 455.0
-offset_top = 319.0
-offset_right = 839.0
-offset_bottom = 416.0
-theme = SubResource("Theme_chv10")
-text = "Go home"
-script = ExtResource("12_d6jv5")
-
-[node name="ExitButton" type="Button" parent="GUi"]
-modulate = Color(1, 0.164706, 0.121569, 1)
-layout_mode = 0
-offset_left = 457.0
-offset_top = 442.0
-offset_right = 838.0
-offset_bottom = 517.0
-theme = SubResource("Theme_enj48")
-text = "Exit"
-script = ExtResource("13_awx7v")
 
 [node name="SettingsButton" type="TextureButton" parent="."]
 unique_name_in_owner = true
@@ -216,12 +36,5 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("4_8jxon")
 
-[connection signal="value_changed" from="Tools/Air/AirBar" to="Tools/Air/AirBar" method="_on_value_changed"]
-[connection signal="pressed" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_down"]
-[connection signal="released" from="Control/ButtonUp" to="Control/ButtonUp" method="_on_button_up"]
-[connection signal="pressed" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_down"]
-[connection signal="released" from="Control/ButtonDown" to="Control/ButtonDown" method="_on_button_up"]
-[connection signal="pressed" from="GUi/HomeButton" to="GUi/HomeButton" method="_on_pressed"]
-[connection signal="pressed" from="GUi/ExitButton" to="GUi/ExitButton" method="_on_pressed"]
 [connection signal="toggled" from="SettingsButton" to="." method="_on_settings_button_toggled"]
 [connection signal="toggled" from="SettingsButton" to="SettingsButton" method="_on_toggled"]

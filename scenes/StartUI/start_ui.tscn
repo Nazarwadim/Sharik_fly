@@ -65,12 +65,13 @@ label_settings = SubResource("LabelSettings_g3lto")
 [node name="ExitButton" type="Button" parent="RigidBody2D"]
 visible = false
 modulate = Color(1, 0.164706, 0.121569, 1)
-offset_left = -332.0
-offset_top = 146.0
-offset_right = 49.0
-offset_bottom = 221.0
+offset_left = 122.0
+offset_top = -150.0
+offset_right = 505.0
+offset_bottom = -75.0
 theme = SubResource("Theme_j7p2e")
 text = "Exit"
+flat = true
 script = ExtResource("4_21iul")
 
 [node name="RigidBody2D2" type="StaticBody2D" parent="."]

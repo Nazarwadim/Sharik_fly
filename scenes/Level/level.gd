@@ -4,8 +4,6 @@ extends Node2D
 @export var cloud_generation_frequency_dustance:float = 1000
 @onready var wind_timer:Timer = $Wind_generator/Timer
 
-@onready var dynamic_image_loader = $DynamicImageLoader
-
 signal on_kaktus_generate
 signal on_cloud_generate
 

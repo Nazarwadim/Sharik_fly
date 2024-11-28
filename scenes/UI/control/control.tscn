@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://jqljaceep778"]
+
+[ext_resource type="Script" path="res://scenes/UI/control/ButtonUp.gd" id="1_haefp"]
+[ext_resource type="Script" path="res://scenes/UI/control/ButtonDown.gd" id="2_x7v5m"]
+
+[sub_resource type="Gradient" id="Gradient_8hfbq"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tjqd1"]
+gradient = SubResource("Gradient_8hfbq")
+
+[sub_resource type="Gradient" id="Gradient_i4exs"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_v8gb0"]
+gradient = SubResource("Gradient_i4exs")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1279.0
+offset_bottom = 720.0
+metadata/_edit_lock_ = true
+
+[node name="ButtonUp" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 1)
+scale = Vector2(5.01172, 369)
+texture_normal = SubResource("GradientTexture1D_tjqd1")
+script = ExtResource("1_haefp")
+metadata/_edit_lock_ = true
+
+[node name="ButtonDown" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 372)
+scale = Vector2(5.01562, 348)
+texture_normal = SubResource("GradientTexture1D_v8gb0")
+script = ExtResource("2_x7v5m")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="ButtonUp" to="ButtonUp" method="_on_button_down"]
+[connection signal="released" from="ButtonUp" to="ButtonUp" method="_on_button_up"]
+[connection signal="pressed" from="ButtonDown" to="ButtonDown" method="_on_button_down"]
+[connection signal="released" from="ButtonDown" to="ButtonDown" method="_on_button_up"]

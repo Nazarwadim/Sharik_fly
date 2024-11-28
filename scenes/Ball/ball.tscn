@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/Ball/ball.gd" id="1_88cyq"]
 [ext_resource type="Texture2D" uid="uid://b2s8yj54dxq85" path="res://assets/Ball_die_1.png" id="1_gtxrs"]
-[ext_resource type="Script" uid="uid://lcuxp157efew" path="res://scenes/Ball/Phisics.gd" id="2_hmx57"]
+[ext_resource type="Script" path="res://scenes/Ball/Phisics.gd" id="2_hmx57"]
 [ext_resource type="Texture2D" uid="uid://6kgarcrs05u6" path="res://assets/Ball_die_2.png" id="2_qbaq7"]
 [ext_resource type="Texture2D" uid="uid://0pau4kpvd8ps" path="res://assets/Ball_die_3.png" id="3_5xqty"]
 [ext_resource type="Texture2D" uid="uid://cx8otjk73wmsv" path="res://assets/Ball_2.png" id="4_l3c13"]
@@ -12,15 +12,15 @@
 [ext_resource type="Material" uid="uid://c6qnslof7wkc4" path="res://materials/Player.tres" id="8_u8kjp"]
 [ext_resource type="AudioStream" uid="uid://c8qrx1j46akn4" path="res://sounds/lopnuv.mp3" id="9_e3w0f"]
 [ext_resource type="AudioStream" uid="uid://cuavehukfnek2" path="res://sounds/zduvsi.mp3" id="10_nf1lp"]
-[ext_resource type="Script" uid="uid://duboaj3ehl6gh" path="res://scenes/Ball/SoundControler.gd" id="10_y2l8a"]
+[ext_resource type="Script" path="res://scenes/Ball/SoundControler.gd" id="10_y2l8a"]
 [ext_resource type="AudioStream" uid="uid://byhtoqv01jn6i" path="res://sounds/zduvsi reverse.mp3" id="11_c7w1i"]
-[ext_resource type="Script" uid="uid://ltgyovvj8qbt" path="res://scenes/Ball/AirPresure.gd" id="11_l8x2v"]
-[ext_resource type="Script" uid="uid://rk4vv5a5h815" path="res://scenes/StateMashine/StateMashine.gd" id="12_ndfgc"]
-[ext_resource type="Script" uid="uid://dci4k3vierh00" path="res://scenes/Ball/StateReady.gd" id="13_uy5xt"]
+[ext_resource type="Script" path="res://scenes/Ball/AirPresure.gd" id="11_l8x2v"]
+[ext_resource type="Script" path="res://scenes/StateMashine/StateMashine.gd" id="12_ndfgc"]
+[ext_resource type="Script" path="res://scenes/Ball/StateReady.gd" id="13_uy5xt"]
 [ext_resource type="Script" path="res://scenes/Ball/HighestScore.gd" id="14_f5hhi"]
-[ext_resource type="Script" uid="uid://cqou8vivc3m8i" path="res://scenes/Ball/StateIdle.gd" id="14_h2ol1"]
-[ext_resource type="Script" uid="uid://5sr1mhr4q0r2" path="res://scenes/Ball/StateDown.gd" id="15_64y08"]
-[ext_resource type="Script" uid="uid://dj54mc3v67ggh" path="res://scenes/Ball/StateUp.gd" id="16_ysclx"]
+[ext_resource type="Script" path="res://scenes/Ball/StateIdle.gd" id="14_h2ol1"]
+[ext_resource type="Script" path="res://scenes/Ball/StateDown.gd" id="15_64y08"]
+[ext_resource type="Script" path="res://scenes/Ball/StateUp.gd" id="16_ysclx"]
 [ext_resource type="Script" path="res://scenes/Ball/StateDie.gd" id="17_xvhhq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k614o"]
@@ -88,10 +88,11 @@ position = Vector2(0, -2)
 polygon = PackedVector2Array(37, -20, 32, -32, 23, -43, -2, -47, -32, -42, -40, -32, -45, -17, -40, 2, -23, 22, 1, 24, 5, 33, 10, 30, 10, 22, 32, 16)
 
 [node name="Trail" type="GPUParticles2D" parent="."]
-amount = 2
+scale = Vector2(0.5, 0.5)
+amount = 10
 process_material = ExtResource("8_u8kjp")
 texture = ExtResource("4_l3c13")
-lifetime = 0.2
+lifetime = 0.1
 trail_enabled = true
 
 [node name="HighestScore" type="Node" parent="."]

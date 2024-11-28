@@ -14,7 +14,6 @@ class_name Ball
 @onready var trail:GPUParticles2D = $Trail
 @onready var state_mashine:BallStateMachine = $StateMashine
 
-
 func _ready():
 	SignalBus.on_restart_button_preased.connect(restart)
 

@@ -10,7 +10,6 @@ func _ready():
 	SignalBus.on_startUI_button_preased.connect(stop)
 	SignalBus.player_died.connect(_player_died)
 
-	
 func start():
 	show()
 	var tween = get_tree().create_tween()

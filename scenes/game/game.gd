@@ -8,9 +8,6 @@ func _ready():
 	SignalBus.player_died.connect(player_died)
 	SignalBus.on_restart_button_preased.connect(restart)
 	SignalBus.on_pause_button_preased.connect(pause)
-	var peer := ENetMultiplayerPeer.new()
-	peer.create_server(1321)
-	
 	
 func player_died(ball_):
 	ball_.sound_controler.process_mode = Node.PROCESS_MODE_ALWAYS
