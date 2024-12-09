@@ -1,7 +1,7 @@
 # Sharik_run
 <p align="center">
-  <img src="Screenshot_1.jpg" width="350" title="hover text">
-  <img src="Screenshot 2.jpg" width="350" alt="accessibility text">
+  <img src="Screenshot1.png" width="350" title="hover text">
+  <img src="Screenshot2.png" width="350" alt="accessibility text">
 </p>
 
 # This is my first full game made in godot.

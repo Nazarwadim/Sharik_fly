@@ -11,10 +11,11 @@ func _ready() -> void:
 	current_persetnage += increment
 	progress.set_persentage(current_persetnage)
 	
-	for path in images_to_load:
-		Globals.loaded_remote_images[path] = await dynamic_image_loader.load_image(path)
-		current_persetnage += increment
-		progress.set_persentage(current_persetnage)
-	await get_tree().create_timer(0.2).timeout
+	if !Globals.SERVER_URL.is_empty():
+		for path in images_to_load:
+			Globals.loaded_remote_images[path] = await dynamic_image_loader.load_image(path)
+			current_persetnage += increment
+			progress.set_persentage(current_persetnage)
+		await get_tree().create_timer(0.2).timeout
 	queue_free()
 	get_node("/root/").add_child.call_deferred(scene.instantiate())

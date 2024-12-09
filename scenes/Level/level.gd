@@ -37,10 +37,12 @@ func _on_generate_wind_timer_timeout():
 
 func _set_loaded_assets():
 	var images:Dictionary = Globals.loaded_remote_images
+	if images.is_empty():
+		return
 	_set_texture_for_texture_rect($ParallaxBackground/sky_layer/TextureRect, images["sky.png"])
 	_set_texture_for_texture_rect($ParallaxBackground/mountain_layer/TextureRect, images["mountains.png"])
 	_set_texture_for_texture_rect($ParallaxBackground/ball_layer/TextureRect, images["sand.png"])
-	
+
 func _set_texture_for_texture_rect(texture_rect, image):
 	if image == null:
 		return
